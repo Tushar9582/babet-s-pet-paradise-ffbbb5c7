@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import logo from "@/assets/babet-logo.png";
 
-const quickLinks = ["Home", "About Us", "Services", "Shop", "Blog", "Contact"];
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Shop", to: "/shop" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
+];
 const resources = ["FAQ", "Testimonials", "Gallery", "Team", "Pricing"];
 const services = ["Pet Grooming", "Veterinary", "Pet Training", "Pet Boarding", "Pet Adoption"];
 
