@@ -1,8 +1,16 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import logo from "@/assets/babet-logo.png";
 
-const quickLinks = ["Home", "About Us", "Services", "Shop", "Blog", "Contact"];
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Shop", to: "/shop" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
+];
 const resources = ["FAQ", "Testimonials", "Gallery", "Team", "Pricing"];
 const services = ["Pet Grooming", "Veterinary", "Pet Training", "Pet Boarding", "Pet Adoption"];
 
@@ -44,7 +52,7 @@ const Footer = () => {
             <h4 className="font-heading font-semibold text-primary-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((l) => (
-                <li key={l}><a href="#" className="text-sm opacity-80 hover:opacity-100 hover:text-primary transition-all">{l}</a></li>
+                <li key={l.label}><Link to={l.to} className="text-sm opacity-80 hover:opacity-100 hover:text-primary transition-all">{l.label}</Link></li>
               ))}
             </ul>
           </div>

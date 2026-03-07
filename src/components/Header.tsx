@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ShoppingCart, Heart, Phone, Menu, X } from "lucide-react";
 import logo from "@/assets/babet-logo.png";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Services", href: "#" },
-  { label: "Shop", href: "#products" },
-  { label: "Blog", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Shop", to: "/shop" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
 ];
 
 interface HeaderProps {
@@ -20,6 +21,7 @@ interface HeaderProps {
 const Header = ({ cartCount, onCartClick }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <>
@@ -39,40 +41,39 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
       <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-md shadow-sm">
         <div className="container flex items-center justify-between py-3 gap-4">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 shrink-0">
+          <Link to="/" className="flex items-center gap-2 shrink-0">
             <img src={logo} alt="Babet" className="h-10 w-10" />
             <span className="font-heading text-xl font-bold text-foreground">Babet</span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                to={link.to}
+                className={`text-sm font-medium transition-colors ${
+                  location.pathname === link.to
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Right actions */}
           <div className="flex items-center gap-3">
-            {/* Search */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               className="p-2 rounded-full hover:bg-muted transition-colors"
             >
               <Search className="w-5 h-5" />
             </button>
-
-            {/* Wishlist */}
             <button className="p-2 rounded-full hover:bg-muted transition-colors hidden sm:flex">
               <Heart className="w-5 h-5" />
             </button>
-
-            {/* Cart */}
             <button
               onClick={onCartClick}
               className="p-2 rounded-full hover:bg-muted transition-colors relative"
@@ -84,8 +85,6 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
                 </span>
               )}
             </button>
-
-            {/* Phone */}
             <a
               href="tel:+25862323258"
               className="hidden xl:flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-medium hover:opacity-90 transition-opacity"
@@ -93,8 +92,6 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
               <Phone className="w-4 h-4" />
               +258 6232 3258
             </a>
-
-            {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileOpen(true)}
               className="lg:hidden p-2 rounded-full hover:bg-muted transition-colors"
@@ -155,14 +152,18 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
               </div>
               <nav className="flex flex-col gap-4">
                 {NAV_LINKS.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.to}
                     onClick={() => setMobileOpen(false)}
-                    className="text-lg font-medium text-foreground hover:text-primary transition-colors py-2 border-b border-border"
+                    className={`text-lg font-medium transition-colors py-2 border-b border-border ${
+                      location.pathname === link.to
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
+                    }`}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
               <a
