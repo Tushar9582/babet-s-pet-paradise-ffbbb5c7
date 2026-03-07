@@ -7,12 +7,16 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
+      fontFamily: {
+        heading: ["Fredoka", "sans-serif"],
+        body: ["Onest", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -47,6 +51,16 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "hero-bg": "hsl(var(--hero-bg))",
+        "section-alt": "hsl(var(--section-alt-bg))",
+        "badge-new": "hsl(var(--badge-new))",
+        "badge-new-fg": "hsl(var(--badge-new-foreground))",
+        "footer-bg": "hsl(var(--footer-bg))",
+        "footer-fg": "hsl(var(--footer-foreground))",
+        "topbar-bg": "hsl(var(--topbar-bg))",
+        "topbar-fg": "hsl(var(--topbar-foreground))",
+        "countdown-bg": "hsl(var(--countdown-bg))",
+        "countdown-fg": "hsl(var(--countdown-foreground))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -65,20 +79,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
