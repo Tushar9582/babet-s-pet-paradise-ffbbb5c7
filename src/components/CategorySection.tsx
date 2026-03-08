@@ -1,15 +1,13 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import { PawPrint, Dog, Cat, Fish, Bird, Rabbit, Turtle } from "lucide-react";
-import "swiper/css";
+import { motion } from "framer-motion";
+import { PawPrint, Shield, Heart, Sparkles, Pill, Bath, Bone } from "lucide-react";
 
 const categories = [
-  { name: "Dogs", count: 12, icon: Dog, color: "10 95% 61%" },
-  { name: "Cats", count: 8, icon: Cat, color: "35 90% 55%" },
-  { name: "Fish", count: 6, icon: Fish, color: "215 98% 59%" },
-  { name: "Birds", count: 5, icon: Bird, color: "142 70% 45%" },
-  { name: "Rabbits", count: 4, icon: Rabbit, color: "280 70% 60%" },
-  { name: "Turtles", count: 3, icon: Turtle, color: "170 60% 45%" },
+  { name: "Flea & Tick", desc: "Protection tablets", icon: Shield, products: 3 },
+  { name: "Joint Care", desc: "Mobility support", icon: Bone, products: 2 },
+  { name: "Heart Health", desc: "Cardiac supplements", icon: Heart, products: 2 },
+  { name: "Skin & Coat", desc: "Derma solutions", icon: Sparkles, products: 2 },
+  { name: "Shampoos", desc: "Antibacterial care", icon: Bath, products: 1 },
+  { name: "Supplements", desc: "Daily wellness", icon: Pill, products: 4 },
 ];
 
 const CategorySection = () => {
@@ -21,41 +19,46 @@ const CategorySection = () => {
             <PawPrint className="w-4 h-4" /> Browse Categories
           </div>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
-            Browse by Pet Category
+            Shop by Health Need
           </h2>
+          <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm md:text-base">
+            Trusted veterinary products to keep your dog healthy, active, and happy.
+          </p>
         </div>
 
-        <Swiper
-          modules={[Autoplay]}
-          spaceBetween={20}
-          slidesPerView={2}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          breakpoints={{
-            640: { slidesPerView: 3 },
-            768: { slidesPerView: 4 },
-            1024: { slidesPerView: 6 },
-          }}
-        >
-          {categories.map((cat) => {
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-5">
+          {categories.map((cat, i) => {
             const Icon = cat.icon;
             return (
-              <SwiperSlide key={cat.name}>
-                <a
-                  href="#"
-                  className="group flex flex-col items-center p-6 rounded-2xl bg-card shadow-sm hover:shadow-lg transition-all border border-border hover:border-primary/30"
-                >
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 bg-primary/10 group-hover:bg-primary/20 transition-colors"
-                  >
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="font-heading font-semibold text-foreground mb-1">{cat.name}</h3>
-                  <p className="text-xs text-muted-foreground">{cat.count} Products</p>
-                </a>
-              </SwiperSlide>
+              <motion.a
+                key={cat.name}
+                href="#"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -6 }}
+                className="group relative flex flex-col items-center p-5 md:p-6 rounded-2xl bg-card border border-border hover:border-primary/40 hover:shadow-xl transition-all duration-300 overflow-hidden"
+              >
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-3 bg-primary/10 group-hover:bg-primary group-hover:shadow-lg transition-all duration-300">
+                  <Icon className="w-7 h-7 md:w-8 md:h-8 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
+                </div>
+                <h3 className="relative font-heading font-bold text-foreground text-sm md:text-base mb-0.5 text-center">
+                  {cat.name}
+                </h3>
+                <p className="relative text-[11px] md:text-xs text-muted-foreground text-center">
+                  {cat.desc}
+                </p>
+                <span className="relative mt-2 text-[10px] font-semibold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
+                  {cat.products} Products
+                </span>
+              </motion.a>
             );
           })}
-        </Swiper>
+        </div>
       </div>
     </section>
   );
