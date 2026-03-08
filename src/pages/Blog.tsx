@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
+import WishlistSidebar from "@/components/WishlistSidebar";
 import { useCart } from "@/context/CartContext";
 import heroPet1 from "@/assets/hero-pet-1.png";
 import heroPet2 from "@/assets/hero-pet-2.png";
@@ -185,6 +186,7 @@ const BlogPage = () => {
       <Footer />
       <ColorSwitcher />
       <CartSidebar />
+      <WishlistSidebar />
       <ScrollToTop />
     </>
   );

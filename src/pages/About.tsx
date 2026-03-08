@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
+import WishlistSidebar from "@/components/WishlistSidebar";
 import { useCart } from "@/context/CartContext";
 
 const stats = [
@@ -186,6 +187,7 @@ const AboutPage = () => {
       <Footer />
       <ColorSwitcher />
       <CartSidebar />
+      <WishlistSidebar />
       <ScrollToTop />
     </>
   );

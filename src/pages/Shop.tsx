@@ -8,6 +8,7 @@ import QuickViewModal from "@/components/QuickViewModal";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
+import WishlistSidebar from "@/components/WishlistSidebar";
 import { products, categories, Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import shopHeroBg from "@/assets/shop-hero-bg.jpg";
@@ -97,6 +98,7 @@ const ShopPage = () => {
       <Footer />
       <ColorSwitcher />
       <CartSidebar />
+      <WishlistSidebar />
       <ScrollToTop />
       <QuickViewModal product={quickView} onClose={() => setQuickView(null)} />
     </>

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
+import WishlistSidebar from "@/components/WishlistSidebar";
 import { useCart } from "@/context/CartContext";
 import { useToast } from "@/hooks/use-toast";
 import contactHeroBg from "@/assets/contact-hero-bg.jpg";
@@ -180,6 +181,7 @@ const ContactPage = () => {
       <Footer />
       <ColorSwitcher />
       <CartSidebar />
+      <WishlistSidebar />
       <ScrollToTop />
     </>
   );

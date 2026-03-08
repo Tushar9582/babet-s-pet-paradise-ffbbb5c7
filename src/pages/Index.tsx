@@ -15,6 +15,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import CartSidebar from "@/components/CartSidebar";
+import WishlistSidebar from "@/components/WishlistSidebar";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useCart } from "@/context/CartContext";
 
@@ -46,6 +47,7 @@ const Index = () => {
           <Footer />
           <ColorSwitcher />
           <CartSidebar />
+          <WishlistSidebar />
           <ScrollToTop />
         </>
       )}
