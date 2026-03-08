@@ -42,7 +42,8 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
         <div className="container flex items-center justify-between py-3 gap-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src={logo} alt="Cadogs" className="h-10" />
+            <img src={logo} alt="Cadogs" className="h-10 rounded-md" />
+            <span className="font-heading font-bold text-xl text-primary hidden sm:inline tracking-wide">CADOGS</span>
           </Link>
 
           {/* Desktop nav */}
