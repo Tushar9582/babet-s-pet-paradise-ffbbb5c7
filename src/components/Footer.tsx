@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
-import logo from "@/assets/babet-logo.png";
+import logo from "@/assets/cadogs-logo.jpeg";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -28,8 +28,7 @@ const Footer = () => {
           {/* About */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="Babet" className="h-8 w-8" />
-              <span className="font-heading text-xl font-bold text-primary-foreground">Babet</span>
+              <img src={logo} alt="Cadogs" className="h-10" />
             </div>
             <p className="text-sm mb-6 opacity-80 max-w-xs">
               Your one-stop shop for premium pet products. We care about your furry, feathery, and scaly friends!
@@ -109,7 +108,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs opacity-60">
-          <p>© 2026 Babet. All rights reserved.</p>
+          <p>© 2026 Cadogs Pet Science Pvt. Ltd. All rights reserved.</p>
           <p>We Accept: Visa • Mastercard • PayPal • Apple Pay</p>
         </div>
       </div>

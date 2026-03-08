@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ShoppingCart, Heart, Phone, Menu, X } from "lucide-react";
-import logo from "@/assets/babet-logo.png";
+import logo from "@/assets/cadogs-logo.jpeg";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -42,8 +42,7 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
         <div className="container flex items-center justify-between py-3 gap-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src={logo} alt="Babet" className="h-10 w-10" />
-            <span className="font-heading text-xl font-bold text-foreground">Babet</span>
+            <img src={logo} alt="Cadogs" className="h-10" />
           </Link>
 
           {/* Desktop nav */}
@@ -143,8 +142,7 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
             >
               <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-2">
-                  <img src={logo} alt="Babet" className="h-8 w-8" />
-                  <span className="font-heading text-lg font-bold">Babet</span>
+                  <img src={logo} alt="Cadogs" className="h-8" />
                 </div>
                 <button onClick={() => setMobileOpen(false)}>
                   <X className="w-6 h-6" />
