@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
+import { X, Minus, Plus, ShoppingCart, Trash2, MessageCircle } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 const CartSidebar = () => {
