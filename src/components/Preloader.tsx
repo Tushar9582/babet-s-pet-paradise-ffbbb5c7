@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import babelLogo from "@/assets/babet-logo.png";
+import babelLogo from "@/assets/cadogs-logo.jpeg";
 
 const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
