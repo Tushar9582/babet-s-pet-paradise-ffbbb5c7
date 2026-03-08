@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import SEOHead from "@/components/SEOHead";
 import { motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { PawPrint, Search, SlidersHorizontal } from "lucide-react";

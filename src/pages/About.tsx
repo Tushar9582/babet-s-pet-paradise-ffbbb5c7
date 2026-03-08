@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEOHead from "@/components/SEOHead";
 import { PawPrint, Heart, Award, Users, Target, Eye } from "lucide-react";
 import cadogsHero from "@/assets/cadogs-hero.jpeg";
 import aboutHeroBg from "@/assets/about-hero-bg.jpg";
