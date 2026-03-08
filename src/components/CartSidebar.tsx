@@ -65,6 +65,20 @@ const CartSidebar = () => {
                 <span>Subtotal</span>
                 <span className="text-primary">₹{subtotal.toLocaleString()}</span>
               </div>
+              <button
+                disabled={items.length === 0}
+                onClick={() => {
+                  const lines = items.map(
+                    (i) => `- ${i.product.name} x ${i.qty} = ₹${(i.product.price * i.qty).toLocaleString()}`
+                  );
+                  const msg = `Hello, I want to order the following products from Babet:\n${lines.join("\n")}\nTotal: ₹${subtotal.toLocaleString()}\nPlease confirm availability and payment.`;
+                  window.open(`https://wa.me/919158888345?text=${encodeURIComponent(msg)}`, "_blank");
+                }}
+                className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Order via WhatsApp
+              </button>
               <div className="grid grid-cols-2 gap-3">
                 <a href="#" className="border-2 border-primary text-primary text-center py-3 rounded-full font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors">
                   View Cart
