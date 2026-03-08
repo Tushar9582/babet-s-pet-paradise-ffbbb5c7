@@ -39,7 +39,7 @@ const ShopPage = () => {
       <main>
         <section className="py-12 md:py-16 relative overflow-hidden" style={{ backgroundImage: `url(${shopHeroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
           <div className="absolute inset-0 bg-hero-bg/80" />
-          <div className="container text-center">
+          <div className="container text-center relative z-10">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
                 <PawPrint className="w-4 h-4" /> Shop
