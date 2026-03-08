@@ -8,6 +8,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
 import { useCart } from "@/context/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import contactHeroBg from "@/assets/contact-hero-bg.jpg";
 
 const contactInfo = [
   { icon: Phone, title: "Call Us", info: "+258 6232 3258", sub: "Mon-Fri, 9am-6pm EST" },
@@ -34,8 +35,8 @@ const ContactPage = () => {
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}
-        <section className="bg-hero-bg py-12 md:py-16 relative overflow-hidden">
-          <div className="absolute bottom-5 right-10 w-20 h-20 rounded-full bg-primary/10 animate-float" />
+        <section className="py-12 md:py-16 relative overflow-hidden" style={{ backgroundImage: `url(${contactHeroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <div className="absolute inset-0 bg-hero-bg/80" />
           <div className="container text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
