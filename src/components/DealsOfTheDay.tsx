@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PawPrint, ArrowRight } from "lucide-react";
-import dealProduct from "@/assets/deal-product.png";
+import dealProduct from "@/assets/exotix-1000mg.jpg";
 
 const TARGET_DATE = new Date("2027-12-06T00:00:00").getTime();
 
