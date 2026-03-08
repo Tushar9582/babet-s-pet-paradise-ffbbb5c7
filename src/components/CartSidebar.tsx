@@ -68,10 +68,11 @@ const CartSidebar = () => {
               {items.length > 0 ? (
                 <a
                   href={(() => {
+                    const shopUrl = `${window.location.origin}/shop`;
                     const lines = items.map(
                       (i) => `- ${i.product.name} x ${i.qty} = ₹${(i.product.price * i.qty).toLocaleString()}`
                     );
-                    const msg = `Hello, I want to order the following products from Babet:\n${lines.join("\n")}\nTotal: ₹${subtotal.toLocaleString()}\nPlease confirm availability and payment.`;
+                    const msg = `Hello, I want to order the following products from Babet:\n${lines.join("\n")}\nTotal: ₹${subtotal.toLocaleString()}\n\nView products: ${shopUrl}\nPlease confirm availability and payment.`;
                     return `https://wa.me/919158888345?text=${encodeURIComponent(msg)}`;
                   })()}
                   target="_blank"
