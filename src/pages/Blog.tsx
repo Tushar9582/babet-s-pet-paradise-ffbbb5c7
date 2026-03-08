@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
+import { useCart } from "@/context/CartContext";
 import heroPet1 from "@/assets/hero-pet-1.png";
 import heroPet2 from "@/assets/hero-pet-2.png";
 import dealProduct from "@/assets/deal-product.png";
@@ -70,7 +71,7 @@ const blogPosts = [
 const categories = ["All", "Nutrition", "Grooming", "Health", "Training", "Education"];
 
 const BlogPage = () => {
-  const [cartOpen, setCartOpen] = useState(false);
+  const { totalItems, setCartOpen } = useCart();
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered = activeCategory === "All"
@@ -79,7 +80,7 @@ const BlogPage = () => {
 
   return (
     <>
-      <Header cartCount={0} onCartClick={() => setCartOpen(true)} />
+      <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}
         <section className="bg-hero-bg py-12 md:py-16 relative overflow-hidden">
@@ -183,7 +184,7 @@ const BlogPage = () => {
       </main>
       <Footer />
       <ColorSwitcher />
-      <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} itemCount={0} />
+      <CartSidebar />
       <ScrollToTop />
     </>
   );

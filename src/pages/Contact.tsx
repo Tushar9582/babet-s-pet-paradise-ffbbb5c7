@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
+import { useCart } from "@/context/CartContext";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
@@ -16,7 +17,7 @@ const contactInfo = [
 ];
 
 const ContactPage = () => {
-  const [cartOpen, setCartOpen] = useState(false);
+  const { totalItems, setCartOpen } = useCart();
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
@@ -177,7 +178,7 @@ const ContactPage = () => {
       </main>
       <Footer />
       <ColorSwitcher />
-      <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} itemCount={0} />
+      <CartSidebar />
       <ScrollToTop />
     </>
   );

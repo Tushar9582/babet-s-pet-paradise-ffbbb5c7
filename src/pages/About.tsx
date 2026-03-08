@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
 import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
-import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 const stats = [
   { value: "10K+", label: "Happy Pets" },
@@ -30,11 +30,11 @@ const team = [
 ];
 
 const AboutPage = () => {
-  const [cartOpen, setCartOpen] = useState(false);
+  const { totalItems, setCartOpen } = useCart();
 
   return (
     <>
-      <Header cartCount={0} onCartClick={() => setCartOpen(true)} />
+      <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}
         <section className="bg-hero-bg py-16 md:py-24 relative overflow-hidden">
@@ -186,7 +186,7 @@ const AboutPage = () => {
       </main>
       <Footer />
       <ColorSwitcher />
-      <CartSidebar isOpen={cartOpen} onClose={() => setCartOpen(false)} itemCount={0} />
+      <CartSidebar />
       <ScrollToTop />
     </>
   );
