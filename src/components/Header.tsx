@@ -25,17 +25,6 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
 
   return (
     <>
-      {/* Top bar */}
-      <div className="bg-topbar-bg text-topbar-fg text-xs py-2">
-        <div className="container flex items-center justify-between">
-          <p className="hidden sm:block">
-            🎉 Get Up To $50 Credits Today! Valid For First Time Booking Through App Only
-          </p>
-          <a href="#" className="font-semibold text-primary hover:underline ml-auto">
-            DOWNLOAD THE APP
-          </a>
-        </div>
-      </div>
 
       {/* Main header */}
       <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-md shadow-sm">
