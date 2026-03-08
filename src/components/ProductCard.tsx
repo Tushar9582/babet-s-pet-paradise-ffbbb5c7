@@ -48,14 +48,14 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
           ))}
           <span className="text-xs text-muted-foreground ml-1">({product.reviews})</span>
         </div>
-        <a href="#" className="font-heading font-semibold text-sm text-foreground hover:text-primary transition-colors line-clamp-2 mb-2 block">
+        <a href="#" className="font-heading font-semibold text-xs sm:text-sm text-foreground hover:text-primary transition-colors line-clamp-2 mb-2 block">
           {product.name}
         </a>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-primary">₹{product.price.toLocaleString()}</span>
+        <div className="flex items-center justify-between gap-1">
+          <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+            <span className="font-bold text-sm sm:text-base text-primary">₹{product.price.toLocaleString()}</span>
             {product.oldPrice && (
-              <span className="text-sm text-muted-foreground line-through">₹{product.oldPrice.toLocaleString()}</span>
+              <span className="text-xs sm:text-sm text-muted-foreground line-through">₹{product.oldPrice.toLocaleString()}</span>
             )}
           </div>
           <button

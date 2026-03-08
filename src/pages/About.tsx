@@ -56,10 +56,10 @@ const AboutPage = () => {
                 <p className="text-muted-foreground text-lg mb-8 max-w-lg">
                   Founded in 2020, Babet started with a simple mission: provide the highest quality, natural products that pets love and owners trust.
                 </p>
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {stats.map((s) => (
                     <div key={s.label} className="text-center">
-                      <p className="text-2xl md:text-3xl font-bold text-primary">{s.value}</p>
+                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">{s.value}</p>
                       <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
                     </div>
                   ))}

@@ -44,11 +44,11 @@ const DealsOfTheDay = () => {
             </p>
 
             {/* Countdown */}
-            <div className="flex gap-3 mb-8">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
               {Object.entries(timeLeft).map(([label, value]) => (
-                <div key={label} className="bg-primary text-primary-foreground rounded-xl px-4 py-3 text-center min-w-[70px]">
-                  <span className="text-2xl font-bold block">{String(value).padStart(2, "0")}</span>
-                  <span className="text-[10px] uppercase tracking-wider opacity-80">{label}</span>
+                <div key={label} className="bg-primary text-primary-foreground rounded-xl px-3 sm:px-4 py-2 sm:py-3 text-center min-w-[60px] sm:min-w-[70px]">
+                  <span className="text-xl sm:text-2xl font-bold block">{String(value).padStart(2, "0")}</span>
+                  <span className="text-[9px] sm:text-[10px] uppercase tracking-wider opacity-80">{label}</span>
                 </div>
               ))}
             </div>

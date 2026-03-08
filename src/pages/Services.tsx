@@ -92,14 +92,14 @@ const ServicesPage = () => {
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">Membership Packages</h2>
               <p className="text-muted-foreground mt-3 max-w-lg mx-auto">Choose a plan that works for you and your pet's needs.</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {pricing.map((p) => (
                 <motion.div
                   key={p.name}
                   whileHover={{ y: -5 }}
-                  className={`rounded-2xl p-8 border transition-all ${
+                  className={`rounded-2xl p-6 sm:p-8 border transition-all ${
                     p.popular
-                      ? "bg-primary text-primary-foreground border-primary shadow-xl scale-105"
+                      ? "bg-primary text-primary-foreground border-primary shadow-xl md:scale-105"
                       : "bg-card text-foreground border-border hover:shadow-lg"
                   }`}
                 >

@@ -35,16 +35,16 @@ const QuickViewModal = ({ product, onClose }: QuickViewModalProps) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[900px] md:max-h-[85vh] bg-card rounded-2xl z-50 overflow-y-auto shadow-2xl"
+            className="fixed inset-2 sm:inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[900px] md:max-h-[85vh] bg-card rounded-2xl z-50 overflow-y-auto shadow-2xl"
           >
             <button onClick={onClose} className="absolute top-4 right-4 p-2 hover:bg-muted rounded-full z-10">
               <X className="w-5 h-5" />
             </button>
 
-            <div className="grid md:grid-cols-2 gap-6 p-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 p-4 sm:p-6">
               {/* Image */}
-              <div className="bg-section-alt rounded-xl flex items-center justify-center p-6">
-                <img src={product.image} alt={product.name} className="w-full max-h-80 object-contain" />
+              <div className="bg-section-alt rounded-xl flex items-center justify-center p-4 sm:p-6">
+                <img src={product.image} alt={product.name} className="w-full max-h-60 sm:max-h-80 object-contain" />
               </div>
 
               {/* Info */}
@@ -70,20 +70,20 @@ const QuickViewModal = ({ product, onClose }: QuickViewModalProps) => {
                 </div>
 
                 {/* Qty + Add to cart */}
-                <div className="flex items-center gap-4 pt-4">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-4">
                   <div className="flex items-center border border-border rounded-full">
-                    <button onClick={() => setQty(Math.max(1, qty - 1))} className="w-10 h-10 flex items-center justify-center hover:bg-muted rounded-l-full">
+                    <button onClick={() => setQty(Math.max(1, qty - 1))} className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center hover:bg-muted rounded-l-full">
                       <Minus className="w-4 h-4" />
                     </button>
-                    <span className="w-10 text-center font-medium">{qty}</span>
-                    <button onClick={() => setQty(qty + 1)} className="w-10 h-10 flex items-center justify-center hover:bg-muted rounded-r-full">
+                    <span className="w-8 sm:w-10 text-center font-medium text-sm">{qty}</span>
+                    <button onClick={() => setQty(qty + 1)} className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center hover:bg-muted rounded-r-full">
                       <Plus className="w-4 h-4" />
                     </button>
                   </div>
-                  <button onClick={handleAdd} className="flex-1 flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity">
+                  <button onClick={handleAdd} className="flex-1 min-w-[140px] flex items-center justify-center gap-2 bg-primary text-primary-foreground py-2.5 sm:py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity">
                     <ShoppingCart className="w-4 h-4" /> Add to Cart
                   </button>
-                  <button className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors">
+                  <button className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors">
                     <Heart className="w-4 h-4" />
                   </button>
                 </div>

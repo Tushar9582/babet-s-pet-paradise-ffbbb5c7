@@ -53,21 +53,21 @@ const ShopPage = () => {
 
         <section className="py-12 md:py-16">
           <div className="container">
-            <div className="flex flex-col md:flex-row gap-4 mb-10">
-              <div className="relative flex-1">
+            <div className="flex flex-col gap-4 mb-10">
+              <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input type="text" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full bg-card border border-border rounded-full pl-10 pr-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary" />
               </div>
               <div className="flex flex-wrap gap-2">
                 {categories.map((cat) => (
-                  <button key={cat} onClick={() => setCategory(cat)} className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${category === cat ? "bg-primary text-primary-foreground" : "bg-card border border-border text-foreground hover:border-primary"}`}>
+                  <button key={cat} onClick={() => setCategory(cat)} className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-colors ${category === cat ? "bg-primary text-primary-foreground" : "bg-card border border-border text-foreground hover:border-primary"}`}>
                     {cat}
                   </button>
                 ))}
               </div>
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-muted-foreground" />
-                <select value={sort} onChange={(e) => setSort(e.target.value)} className="bg-card border border-border rounded-full px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary">
+                <SlidersHorizontal className="w-4 h-4 text-muted-foreground shrink-0" />
+                <select value={sort} onChange={(e) => setSort(e.target.value)} className="bg-card border border-border rounded-full px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary w-full sm:w-auto">
                   {sortOptions.map((o) => (<option key={o}>{o}</option>))}
                 </select>
               </div>
@@ -76,7 +76,7 @@ const ShopPage = () => {
             <p className="text-sm text-muted-foreground mb-6">Showing {filtered.length} product{filtered.length !== 1 ? "s" : ""}</p>
 
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                 {filtered.map((product, index) => (
                   <motion.div key={product.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.05 }}>
                     <ProductCard product={product} onQuickView={setQuickView} />

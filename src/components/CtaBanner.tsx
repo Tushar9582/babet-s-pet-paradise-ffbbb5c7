@@ -6,10 +6,10 @@ const CtaBanner = () => {
   return (
     <section className="py-16 md:py-20">
       <div className="container">
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {/* Left CTA */}
-          <div className="relative bg-secondary rounded-3xl overflow-hidden p-8 flex items-center min-h-[220px]">
-            <div className="relative z-10 max-w-[60%]">
+          <div className="relative bg-secondary rounded-3xl overflow-hidden p-6 sm:p-8 flex items-center min-h-[180px] sm:min-h-[220px]">
+            <div className="relative z-10 max-w-[65%] sm:max-w-[60%]">
               <span className="text-primary font-bold text-sm">15% OFF</span>
               <h3 className="font-heading text-xl md:text-2xl font-bold text-foreground mt-1 mb-4">
                 Fresh Natural Pets Food
@@ -26,8 +26,8 @@ const CtaBanner = () => {
           </div>
 
           {/* Right CTA */}
-          <div className="relative bg-primary/10 rounded-3xl overflow-hidden p-8 flex items-center min-h-[220px]">
-            <div className="relative z-10 max-w-[60%]">
+          <div className="relative bg-primary/10 rounded-3xl overflow-hidden p-6 sm:p-8 flex items-center min-h-[180px] sm:min-h-[220px]">
+            <div className="relative z-10 max-w-[65%] sm:max-w-[60%]">
               <span className="text-primary font-bold text-sm">NEW ARRIVAL</span>
               <h3 className="font-heading text-xl md:text-2xl font-bold text-foreground mt-1 mb-4">
                 Premium Cat Food Collection
