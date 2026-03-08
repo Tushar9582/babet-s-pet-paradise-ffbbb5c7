@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEOHead from "@/components/SEOHead";
 import { PawPrint, Heart, Award, Users, Target, Eye } from "lucide-react";
 import cadogsHero from "@/assets/cadogs-hero.jpeg";
 import aboutHeroBg from "@/assets/about-hero-bg.jpg";
@@ -35,6 +36,7 @@ const AboutPage = () => {
 
   return (
     <>
+      <SEOHead title="About Us — Cadogs Pet Science" description="Learn about Cadogs Pet Science — our mission to provide premium veterinary products and supplements for dogs." canonical="https://cadogs.com/about" />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}

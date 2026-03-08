@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import SEOHead from "@/components/SEOHead";
 import { motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
 import { PawPrint, Search, SlidersHorizontal } from "lucide-react";
@@ -45,6 +46,7 @@ const ShopPage = () => {
 
   return (
     <>
+      <SEOHead title="Shop — Cadogs Pet Science | Dog Health Products" description="Browse premium veterinary products — flea & tick tablets, joint supplements, heart care, skin & coat support for dogs." canonical="https://cadogs.com/shop" />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         <section className="py-12 md:py-16 relative overflow-hidden" style={{ backgroundImage: `url(${shopHeroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>

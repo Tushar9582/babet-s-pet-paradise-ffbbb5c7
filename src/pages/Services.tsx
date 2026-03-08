@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SEOHead from "@/components/SEOHead";
 import { PawPrint, Stethoscope, Scissors, Bath, Home, GraduationCap, Heart, ArrowRight, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -29,6 +30,7 @@ const ServicesPage = () => {
 
   return (
     <>
+      <SEOHead title="Services — Cadogs Pet Science | Vet Care & Grooming" description="Explore our pet services — veterinary care, grooming, spa, boarding, training, and adoption programs." canonical="https://cadogs.com/services" />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}

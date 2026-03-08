@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEOHead from "@/components/SEOHead";
 import { motion } from "framer-motion";
 import { PawPrint, Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import Header from "@/components/Header";
@@ -33,6 +34,7 @@ const ContactPage = () => {
 
   return (
     <>
+      <SEOHead title="Contact Us — Cadogs Pet Science" description="Get in touch with Cadogs Pet Science. Call, email, or visit us for questions about veterinary products and services." canonical="https://cadogs.com/contact" />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}
