@@ -1,6 +1,7 @@
 import { Star, ShoppingCart, Heart, Eye } from "lucide-react";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,8 @@ interface ProductCardProps {
 
 const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+  const liked = isInWishlist(product.id);
 
   return (
     <div className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300">
@@ -25,8 +28,11 @@ const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
           </span>
         )}
         <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300">
-          <button className="w-9 h-9 rounded-full bg-card shadow-md flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors">
-            <Heart className="w-4 h-4" />
+          <button
+            onClick={() => liked ? removeFromWishlist(product.id) : addToWishlist(product)}
+            className={`w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-colors ${liked ? "bg-primary text-primary-foreground" : "bg-card hover:bg-primary hover:text-primary-foreground"}`}
+          >
+            <Heart className={`w-4 h-4 ${liked ? "fill-current" : ""}`} />
           </button>
           <button
             onClick={() => onQuickView?.(product)}

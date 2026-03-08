@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ShoppingCart, Heart, Phone, Menu, X } from "lucide-react";
 import logo from "@/assets/cadogs-logo.jpeg";
+import { useWishlist } from "@/context/WishlistContext";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -22,6 +23,7 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
+  const { totalWishlist, setWishlistOpen } = useWishlist();
 
   return (
     <>
@@ -59,8 +61,16 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
             >
               <Search className="w-5 h-5" />
             </button>
-            <button className="p-2 rounded-full hover:bg-muted transition-colors hidden sm:flex">
+            <button
+              onClick={() => setWishlistOpen(true)}
+              className="p-2 rounded-full hover:bg-muted transition-colors hidden sm:flex relative"
+            >
               <Heart className="w-5 h-5" />
+              {totalWishlist > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                  {totalWishlist}
+                </span>
+              )}
             </button>
             <button
               onClick={onCartClick}
