@@ -35,7 +35,7 @@ const QuickViewModal = ({ product, onClose }: QuickViewModalProps) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="fixed inset-2 sm:inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[900px] md:max-h-[85vh] bg-card rounded-2xl z-50 overflow-y-auto shadow-2xl"
+            className="fixed inset-2 sm:inset-4 md:inset-0 md:m-auto md:w-[900px] md:max-w-[calc(100vw-4rem)] md:h-fit md:max-h-[85vh] bg-card rounded-2xl z-50 overflow-y-auto shadow-2xl"
           >
             <button onClick={onClose} className="absolute top-4 right-4 p-2 hover:bg-muted rounded-full z-10">
               <X className="w-5 h-5" />
