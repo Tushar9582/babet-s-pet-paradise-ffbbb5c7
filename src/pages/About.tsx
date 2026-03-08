@@ -34,6 +34,7 @@ const team = [
 const AboutPage = () => {
   const { totalItems, setCartOpen } = useCart();
 
+  return (
     <>
       <SEOHead title="About Us — Cadogs Pet Science" description="Learn about Cadogs Pet Science — our mission to provide premium veterinary products and supplements for dogs." canonical="https://cadogs.com/about" />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
