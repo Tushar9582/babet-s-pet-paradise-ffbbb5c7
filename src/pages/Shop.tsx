@@ -10,6 +10,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import CartSidebar from "@/components/CartSidebar";
 import { products, categories, Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import shopHeroBg from "@/assets/shop-hero-bg.jpg";
 
 const sortOptions = ["Default", "Price: Low to High", "Price: High to Low", "Rating"];
 
