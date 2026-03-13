@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
-import { PawPrint, Stethoscope, Scissors, Bath, Home, GraduationCap, Heart, ArrowRight, Check } from "lucide-react";
+import { PawPrint, ShoppingBag, Phone, Truck, Shield, Clock, MessageCircle, ArrowRight, Check, Package, HeartHandshake } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ColorSwitcher from "@/components/ColorSwitcher";
@@ -10,19 +10,48 @@ import WishlistSidebar from "@/components/WishlistSidebar";
 import { useCart } from "@/context/CartContext";
 import servicesHeroBg from "@/assets/services-hero-bg.jpg";
 
-const services = [
-  { icon: Stethoscope, title: "Veterinary Care", desc: "Regular check-ups, vaccinations, and emergency care from certified veterinarians.", features: ["Annual check-ups", "Vaccinations", "Emergency care", "Dental cleaning"] },
-  { icon: Scissors, title: "Pet Grooming", desc: "Professional grooming services to keep your pet looking and feeling their best.", features: ["Bath & dry", "Haircut & styling", "Nail trimming", "Ear cleaning"] },
-  { icon: Bath, title: "Pet Spa", desc: "Luxurious spa treatments for pampered pets who deserve a little extra love.", features: ["Aromatherapy", "Deep conditioning", "Paw massage", "De-shedding"] },
-  { icon: Home, title: "Pet Boarding", desc: "Safe, comfortable boarding facilities where your pet feels right at home.", features: ["24/7 supervision", "Climate controlled", "Daily exercise", "Webcam access"] },
-  { icon: GraduationCap, title: "Pet Training", desc: "Expert training programs for puppies and adult dogs of all breeds.", features: ["Basic obedience", "Behavior correction", "Socialization", "Advanced tricks"] },
-  { icon: Heart, title: "Pet Adoption", desc: "Help a rescue pet find their forever home through our adoption program.", features: ["Rescue partnerships", "Health screening", "Behavioral assessment", "Adoption support"] },
+const howItWorks = [
+  {
+    step: "01",
+    title: "Browse Products",
+    desc: "Explore our range of vet-grade dog supplements — skin care, joint support, heart health & more.",
+    icon: ShoppingBag,
+  },
+  {
+    step: "02",
+    title: "Place Your Order",
+    desc: "Add products to cart and place your order online. Safe & secure checkout with multiple payment options.",
+    icon: Package,
+  },
+  {
+    step: "03",
+    title: "Fast Delivery",
+    desc: "We deliver your order right to your doorstep. Track your shipment in real-time.",
+    icon: Truck,
+  },
 ];
 
-const pricing = [
-  { name: "Basic", price: 29, period: "/month", desc: "Essential care for your pet", features: ["Monthly check-up", "Basic grooming", "10% store discount", "Email support"], popular: false },
-  { name: "Premium", price: 59, period: "/month", desc: "Complete pet wellness package", features: ["Bi-weekly check-ups", "Full grooming", "20% store discount", "Priority support", "Dental cleaning"], popular: true },
-  { name: "VIP", price: 99, period: "/month", desc: "The ultimate pet care experience", features: ["Weekly check-ups", "Unlimited grooming", "30% store discount", "24/7 support", "Spa treatments", "Free boarding (3 days)"], popular: false },
+const whyUs = [
+  {
+    icon: Shield,
+    title: "Vet-Grade Quality",
+    desc: "All our supplements are carefully developed with veterinary-grade ingredients to ensure safety and effectiveness.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Built from Real Needs",
+    desc: "Cadogs was born from years of interacting with pet parents and understanding the real health concerns of dogs.",
+  },
+  {
+    icon: Clock,
+    title: "Preventive Approach",
+    desc: "We focus on early care — supporting your dog's health daily before small signs become bigger problems.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Direct Support",
+    desc: "Have questions? Call us directly or WhatsApp us. We're always here to help you choose the right products.",
+  },
 ];
 
 const ServicesPage = () => {
@@ -30,7 +59,11 @@ const ServicesPage = () => {
 
   return (
     <>
-      <SEOHead title="Services — Cadogs Pet Science | Vet Care & Grooming" description="Explore our pet services — veterinary care, grooming, spa, boarding, training, and adoption programs." canonical="https://cadogs.com/services" />
+      <SEOHead
+        title="Our Services — Cadogs | Dog Supplements & Wellness Products Online"
+        description="Order premium dog supplements online from Cadogs. Skin care, joint support, heart health — delivered to your door. Contact us directly for guidance."
+        canonical="https://cadogs.com/services"
+      />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}
@@ -43,46 +76,72 @@ const ServicesPage = () => {
           <div className="container text-center relative z-10">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-                <PawPrint className="w-4 h-4" /> Our Services
+                <PawPrint className="w-4 h-4" /> What We Offer
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Complete Care for Your Pet
+                Premium Dog Supplements, Delivered to You
               </h1>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                From grooming to veterinary care, we offer a comprehensive range of services to keep your pet healthy, happy, and looking great.
+                We provide trusted, vet-grade dog supplements for skin, joints, heart & overall wellness. Order online or contact us directly — we're here to help.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Services grid */}
+        {/* What We Provide */}
         <section className="py-16 md:py-20">
+          <div className="container max-w-3xl">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
+                  <PawPrint className="w-4 h-4" /> Our Services
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">What We Do</h2>
+              </div>
+              <div className="space-y-4 text-muted-foreground leading-relaxed text-center">
+                <p>
+                  At <span className="text-foreground font-semibold">Cadogs</span>, we specialize in providing premium dog supplements and wellness products. From skin & coat care to joint support, heart health, and flea & tick protection — our range is carefully designed to support your dog's daily health.
+                </p>
+                <p>
+                  You can conveniently <span className="text-foreground font-semibold">order through our website</span> and get products delivered to your doorstep. If you need help choosing the right product, feel free to <span className="text-foreground font-semibold">contact us directly</span> — we're always happy to guide you.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section className="py-16 md:py-20 bg-section-alt">
           <div className="container">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map((s, i) => {
-                const Icon = s.icon;
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
+                <PawPrint className="w-4 h-4" /> How It Works
+              </div>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">Order in 3 Simple Steps</h2>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {howItWorks.map((item, i) => {
+                const Icon = item.icon;
                 return (
                   <motion.div
-                    key={s.title}
+                    key={item.step}
                     initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ y: -5 }}
-                    className="bg-card rounded-2xl border border-border p-8 hover:shadow-lg transition-all group"
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 }}
+                    className="text-center relative"
                   >
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Icon className="w-7 h-7" />
+                    <div className="w-20 h-20 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-5">
+                      <Icon className="w-9 h-9" />
                     </div>
-                    <h3 className="font-heading text-lg font-bold text-foreground mb-2">{s.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{s.desc}</p>
-                    <ul className="space-y-2">
-                      {s.features.map((f) => (
-                        <li key={f} className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Check className="w-4 h-4 text-primary shrink-0" />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
+                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Step {item.step}</span>
+                    <h3 className="font-heading text-lg font-bold text-foreground mt-2 mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    {i < howItWorks.length - 1 && (
+                      <div className="hidden md:block absolute top-10 -right-4 w-8 text-primary/30">
+                        <ArrowRight className="w-8 h-8" />
+                      </div>
+                    )}
                   </motion.div>
                 );
               })}
@@ -90,57 +149,73 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="py-16 md:py-20 bg-section-alt">
+        {/* Why Choose Us */}
+        <section className="py-16 md:py-20">
           <div className="container">
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
-                <PawPrint className="w-4 h-4" /> Pricing
+                <PawPrint className="w-4 h-4" /> Why Cadogs
               </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">Membership Packages</h2>
-              <p className="text-muted-foreground mt-3 max-w-lg mx-auto">Choose a plan that works for you and your pet's needs.</p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">Why Pet Parents Trust Us</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {pricing.map((p) => (
-                <motion.div
-                  key={p.name}
-                  whileHover={{ y: -5 }}
-                  className={`rounded-2xl p-6 sm:p-8 border transition-all ${
-                    p.popular
-                      ? "bg-primary text-primary-foreground border-primary shadow-xl md:scale-105"
-                      : "bg-card text-foreground border-border hover:shadow-lg"
-                  }`}
-                >
-                  {p.popular && (
-                    <span className="inline-block bg-primary-foreground text-primary text-xs font-bold px-3 py-1 rounded-full mb-4">Most Popular</span>
-                  )}
-                  <h3 className="font-heading text-xl font-bold">{p.name}</h3>
-                  <p className={`text-sm mt-1 mb-4 ${p.popular ? "opacity-80" : "text-muted-foreground"}`}>{p.desc}</p>
-                  <div className="mb-6">
-                    <span className="text-4xl font-bold">${p.price}</span>
-                    <span className={`text-sm ${p.popular ? "opacity-70" : "text-muted-foreground"}`}>{p.period}</span>
-                  </div>
-                  <ul className="space-y-3 mb-8">
-                    {p.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm">
-                        <Check className={`w-4 h-4 shrink-0 ${p.popular ? "" : "text-primary"}`} />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <a
-                    href="#"
-                    className={`flex items-center justify-center gap-2 py-3 rounded-full font-semibold text-sm transition-all ${
-                      p.popular
-                        ? "bg-primary-foreground text-primary hover:opacity-90"
-                        : "bg-primary text-primary-foreground hover:opacity-90"
-                    }`}
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {whyUs.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="bg-card rounded-2xl border border-border p-8 hover:shadow-lg transition-all group"
                   >
-                    Get Started <ArrowRight className="w-4 h-4" />
-                  </a>
-                </motion.div>
-              ))}
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    <h3 className="font-heading text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  </motion.div>
+                );
+              })}
             </div>
+          </div>
+        </section>
+
+        {/* Contact CTA */}
+        <section className="py-16 md:py-20 bg-section-alt">
+          <div className="container">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-2xl mx-auto text-center"
+            >
+              <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
+                <Phone className="w-4 h-4" /> Get in Touch
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Need Help Choosing the Right Product?</h2>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                We understand every dog is different. If you're unsure which supplement is right for your pet, reach out to us. We'll help you find the perfect solution.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="tel:+919158888345"
+                  className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-semibold hover:opacity-90 transition-opacity shadow-lg"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call Us: +91 9158 888 345
+                </a>
+                <a
+                  href="mailto:hello@cadogs.com"
+                  className="inline-flex items-center justify-center gap-2 bg-card text-foreground border border-border px-8 py-3.5 rounded-full font-semibold hover:border-primary transition-colors"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  hello@cadogs.com
+                </a>
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>
