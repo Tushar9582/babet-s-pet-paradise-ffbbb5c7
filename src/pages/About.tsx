@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
-import { PawPrint, Heart, Award, Users, Target, Eye } from "lucide-react";
+import { PawPrint, Heart, Target, Eye } from "lucide-react";
 import cadogsHero from "@/assets/cadogs-hero.jpeg";
 import aboutHeroBg from "@/assets/about-hero-bg.jpg";
 import Header from "@/components/Header";
@@ -11,61 +11,36 @@ import CartSidebar from "@/components/CartSidebar";
 import WishlistSidebar from "@/components/WishlistSidebar";
 import { useCart } from "@/context/CartContext";
 
-const stats = [
-  { value: "10K+", label: "Happy Pets" },
-  { value: "500+", label: "Products" },
-  { value: "50+", label: "Brands" },
-  { value: "24/7", label: "Support" },
-];
-
-const values = [
-  { icon: Heart, title: "Love for Pets", desc: "Every product is selected with genuine care for your furry, feathery, and scaly companions." },
-  { icon: Award, title: "Premium Quality", desc: "We partner only with trusted brands that meet our high standards for pet nutrition and safety." },
-  { icon: Users, title: "Community First", desc: "We're building a community of pet lovers who share tips, stories, and support each other." },
-];
-
-const team = [
-  { name: "Jessica Miller", role: "Founder & CEO", initial: "JM" },
-  { name: "David Park", role: "Head of Products", initial: "DP" },
-  { name: "Amanda Cruz", role: "Veterinary Advisor", initial: "AC" },
-  { name: "Ryan Thompson", role: "Customer Care Lead", initial: "RT" },
-];
-
 const AboutPage = () => {
   const { totalItems, setCartOpen } = useCart();
 
   return (
     <>
-      <SEOHead title="About Us — Cadogs Pet Science" description="Learn about Cadogs Pet Science — our mission to provide premium veterinary products and supplements for dogs." canonical="https://cadogs.com/about" />
+      <SEOHead
+        title="About Us — Cadogs | Preventive Dog Wellness & Supplements"
+        description="Learn about Cadogs — built from real pet parent needs. We support early care and preventive wellness for dogs through trusted supplements and grooming products."
+        canonical="https://cadogs.com/about"
+      />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}
-        <section className="py-16 md:py-24 relative overflow-hidden" style={{ backgroundImage: `url(${aboutHeroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <section
+          className="py-16 md:py-24 relative overflow-hidden"
+          style={{ backgroundImage: `url(${aboutHeroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+        >
           <div className="absolute inset-0 bg-hero-bg/80" />
           <div className="container relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
+              <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
                 <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
                   <PawPrint className="w-4 h-4" /> About Us
                 </div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4">
-                  We're Passionate About Your Pets
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
+                  About Us — Cadogs
                 </h1>
-                <p className="text-muted-foreground text-lg mb-8 max-w-lg">
-                  Founded in 2020, Cadogs started with a simple mission: provide the highest quality veterinary pharmaceutical and nutritional products that pets need and owners trust.
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  At Cadogs, everything started with a simple realization — most pet health problems are noticed too late.
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {stats.map((s) => (
-                    <div key={s.label} className="text-center">
-                      <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">{s.value}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, x: 40 }}
@@ -73,9 +48,62 @@ const AboutPage = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex justify-center"
               >
-                <img src={cadogsHero} alt="Cadogs Veterinary Innovations" className="rounded-3xl max-w-md w-full shadow-xl" />
+                <img src={cadogsHero} alt="Cadogs — Preventive Dog Wellness" className="rounded-3xl max-w-md w-full shadow-xl" />
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Our Story */}
+        <section className="py-16 md:py-20">
+          <div className="container max-w-3xl">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+              <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
+                <PawPrint className="w-4 h-4" /> Our Story
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">How It All Started</h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  For years, we interacted with pet parents offline and heard the same concerns again and again. Dogs suffering from itching, dull coats, low energy, or joint discomfort — problems that often started with small signs but grew bigger over time.
+                </p>
+                <p>
+                  What we realized was something important: dogs rarely show pain the way humans do. They adjust, they stay quiet, and by the time we notice something is wrong, the issue has already progressed.
+                </p>
+                <p>That's where the idea of Cadogs began.</p>
+                <p>
+                  Cadogs was created with a mission to support early care and preventive wellness for dogs. Instead of waiting for health problems to become serious, we believe in supporting their bodies daily — from skin and coat health to joint mobility and overall vitality.
+                </p>
+                <p>
+                  Our range includes carefully developed supplements, grooming products, and wellness solutions designed to support dogs in living healthier, more comfortable lives.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Not Just Products */}
+        <section className="py-16 md:py-20 bg-section-alt">
+          <div className="container max-w-3xl">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+              <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
+                <Heart className="w-4 h-4" /> More Than Products
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">But Cadogs Is Not Just About Products</h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  It is about helping pet parents understand their dogs better, recognize early signs of discomfort, and provide the care they truly deserve.
+                </p>
+                <p>
+                  Today, as we expand digitally, our goal is to reach more homes, educate more pet parents, and make trusted pet wellness solutions accessible to everyone.
+                </p>
+                <p className="text-foreground font-semibold text-lg">
+                  Because for our dogs, we are their whole world — and they deserve nothing but the best care.
+                </p>
+                <p className="text-primary font-bold text-lg mt-6">
+                  Cadogs — Built from real pet parent needs.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -83,105 +111,35 @@ const AboutPage = () => {
         <section className="py-16 md:py-20">
           <div className="container">
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-card rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-card rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow"
+              >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4">
                   <Target className="w-7 h-7" />
                 </div>
                 <h3 className="font-heading text-xl font-bold text-foreground mb-3">Our Mission</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  To make premium pet care accessible to every pet owner. We believe that every pet deserves the best nutrition, the safest toys, and the most comfortable accessories — without breaking the bank.
+                  To help pet parents care for their dogs before problems become serious, through preventive wellness and trusted products.
                 </p>
-              </div>
-              <div className="bg-card rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="bg-card rounded-2xl border border-border p-8 hover:shadow-lg transition-shadow"
+              >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-4">
                   <Eye className="w-7 h-7" />
                 </div>
                 <h3 className="font-heading text-xl font-bold text-foreground mb-3">Our Vision</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  To become the world's most trusted pet shop, known for quality, transparency, and an unwavering commitment to animal welfare. We envision a world where every pet thrives.
+                  To become a trusted wellness partner for every dog parent who wants a healthier, happier life for their pets.
                 </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Values */}
-        <section className="py-16 md:py-20 bg-section-alt">
-          <div className="container">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
-                <PawPrint className="w-4 h-4" /> What We Stand For
-              </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">Our Core Values</h2>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              {values.map((v) => {
-                const Icon = v.icon;
-                return (
-                  <motion.div
-                    key={v.title}
-                    whileHover={{ y: -5 }}
-                    className="bg-card rounded-2xl border border-border p-8 text-center hover:shadow-lg transition-shadow"
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-                      <Icon className="w-8 h-8" />
-                    </div>
-                    <h3 className="font-heading text-lg font-bold text-foreground mb-2">{v.title}</h3>
-                    <p className="text-sm text-muted-foreground">{v.desc}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Story */}
-        <section className="py-16 md:py-20">
-          <div className="container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <img src={cadogsHero} alt="Cadogs story" className="rounded-3xl shadow-lg w-full max-w-md mx-auto" />
-              <div>
-                <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
-                  <PawPrint className="w-4 h-4" /> Our Story
-                </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">How It All Started</h2>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  It all began when our founder, Jessica, struggled to find high-quality, natural food for her rescue dog, Max. Every store seemed to stock the same mass-produced products filled with artificial ingredients.
-                </p>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  Frustrated but determined, she started researching pet nutrition and connecting with small, ethical pet food producers. What started as a personal quest became Cadogs — a curated marketplace for pet owners who refuse to compromise on quality.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  Today, we serve over 10,000 happy pets and their families, and we're just getting started.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Team */}
-        <section className="py-16 md:py-20 bg-section-alt">
-          <div className="container">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
-                <PawPrint className="w-4 h-4" /> Our Team
-              </div>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">Meet the Pack</h2>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {team.map((t) => (
-                <motion.div
-                  key={t.name}
-                  whileHover={{ y: -5 }}
-                  className="bg-card rounded-2xl border border-border p-6 text-center hover:shadow-lg transition-shadow"
-                >
-                  <div className="w-20 h-20 rounded-full bg-primary/10 text-primary font-heading font-bold text-2xl flex items-center justify-center mx-auto mb-4">
-                    {t.initial}
-                  </div>
-                  <h3 className="font-heading font-semibold text-foreground">{t.name}</h3>
-                  <p className="text-xs text-muted-foreground mt-1">{t.role}</p>
-                </motion.div>
-              ))}
+              </motion.div>
             </div>
           </div>
         </section>

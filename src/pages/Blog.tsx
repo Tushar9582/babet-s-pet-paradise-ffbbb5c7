@@ -10,80 +10,40 @@ import CartSidebar from "@/components/CartSidebar";
 import WishlistSidebar from "@/components/WishlistSidebar";
 import { useCart } from "@/context/CartContext";
 import heroPet1 from "@/assets/hero-pet-1.png";
-import heroPet2 from "@/assets/hero-pet-2.png";
-import dealProduct from "@/assets/deal-product.png";
 import blogHeroBg from "@/assets/blog-hero-bg.jpg";
 
 const blogPosts = [
   {
-    title: "Flea & Tick Prevention: Complete Guide for Dog Owners",
-    excerpt: "Learn how fluralaner chewable tablets like Exotix provide 12-week flea and tick protection for dogs. Vet-recommended prevention tips inside.",
+    title: "Why Is My Dog Scratching So Much?",
+    excerpt:
+      "Many pet parents think scratching is normal for dogs. While occasional scratching is completely natural, frequent scratching can sometimes indicate an underlying issue.",
     image: heroPet1,
-    category: "Flea & Tick",
-    author: "Dr. Sarah Miller",
-    date: "Mar 5, 2026",
+    category: "Skin Care",
+    author: "Cadogs Team",
+    date: "Mar 11, 2026",
     readTime: "5 min read",
-  },
-  {
-    title: "Best Joint Supplements for Dogs with Arthritis",
-    excerpt: "Glucosamine, chondroitin & MSM — discover why veterinarians recommend joint supplements like Prime Joint Support for dogs with hip dysplasia and arthritis.",
-    image: heroPet2,
-    category: "Joint Care",
-    author: "Dr. Rajesh Patel",
-    date: "Mar 3, 2026",
-    readTime: "7 min read",
-  },
-  {
-    title: "Dog Heart Health: Signs, Supplements & Prevention",
-    excerpt: "L-Carnitine, Taurine & CoQ10 — how heart care supplements like ShowCharge support cardiac function in aging dogs. Early warning signs every owner should know.",
-    image: dealProduct,
-    category: "Heart Health",
-    author: "Dr. Sarah Miller",
-    date: "Feb 28, 2026",
-    readTime: "8 min read",
-  },
-  {
-    title: "Dog Skin Problems: Causes, Treatment & Best Shampoos",
-    excerpt: "From pyoderma to seborrhea — learn about common dog skin conditions and how medicated shampoos like Keramaxy with benzoyl peroxide help treat them.",
-    image: heroPet1,
-    category: "Skin Care",
-    author: "Dr. Anjali Sharma",
-    date: "Feb 25, 2026",
-    readTime: "6 min read",
-  },
-  {
-    title: "How to Choose the Right Dog Supplement: A Vet's Guide",
-    excerpt: "Not all supplements are equal. Learn what to look for in veterinary-grade dog supplements — biotin for coat, glucosamine for joints, taurine for heart health.",
-    image: heroPet2,
-    category: "Nutrition",
-    author: "Dr. Rajesh Patel",
-    date: "Feb 20, 2026",
-    readTime: "10 min read",
-  },
-  {
-    title: "Skin & Coat Health: Top Nutrients Your Dog Needs",
-    excerpt: "Biotin, zinc, omega-3 fatty acids & seaweed extract — the essential nutrients in supplements like Furlux for a shiny coat and healthy skin in dogs.",
-    image: dealProduct,
-    category: "Skin Care",
-    author: "Dr. Anjali Sharma",
-    date: "Feb 15, 2026",
-    readTime: "6 min read",
+    fullContent: true,
   },
 ];
 
-const categories = ["All", "Flea & Tick", "Joint Care", "Heart Health", "Skin Care", "Nutrition"];
+const categories = ["All", "Skin Care", "Joint Care", "Wellness"];
 
 const BlogPage = () => {
   const { totalItems, setCartOpen } = useCart();
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const filtered = activeCategory === "All"
-    ? blogPosts
-    : blogPosts.filter((p) => p.category === activeCategory);
+  const filtered =
+    activeCategory === "All"
+      ? blogPosts
+      : blogPosts.filter((p) => p.category === activeCategory);
 
   return (
     <>
-      <SEOHead title="Blog — Cadogs Pet Science | Dog Health Tips & Guides" description="Read expert articles on dog health, nutrition, grooming tips, and veterinary advice." canonical="https://cadogs.com/blog" />
+      <SEOHead
+        title="Blog — Cadogs | Dog Health Tips, Skin Care & Wellness Guides"
+        description="Read expert articles on dog skin health, scratching causes, grooming tips, and preventive wellness advice from Cadogs."
+        canonical="https://cadogs.com/blog"
+      />
       <Header cartCount={totalItems} onCartClick={() => setCartOpen(true)} />
       <main>
         {/* Hero */}
@@ -99,19 +59,18 @@ const BlogPage = () => {
                 <PawPrint className="w-4 h-4" /> Blog
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Pet Care Tips & Stories
+                Dog Health Tips & Guides
               </h1>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Expert advice, helpful guides, and heartwarming stories from the Cadogs community.
+                Expert advice on preventive wellness, skin care, and keeping your dog healthy and happy.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Blog grid */}
+        {/* Category filter */}
         <section className="py-12 md:py-16">
           <div className="container">
-            {/* Category filter */}
             <div className="flex flex-wrap gap-2 mb-10 justify-center">
               {categories.map((cat) => (
                 <button
@@ -128,65 +87,87 @@ const BlogPage = () => {
               ))}
             </div>
 
-            {/* Featured post */}
-            {filtered.length > 0 && (
-              <motion.div
+            {/* Featured Article — Full Content */}
+            {filtered.length > 0 && filtered[0].fullContent && (
+              <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="grid md:grid-cols-2 gap-8 mb-12 bg-card rounded-3xl border border-border overflow-hidden hover:shadow-xl transition-shadow"
+                className="bg-card rounded-3xl border border-border overflow-hidden mb-12"
               >
-                <img src={filtered[0].image} alt={filtered[0].title} className="w-full h-64 md:h-full object-cover" />
-                <div className="p-8 flex flex-col justify-center">
-                  <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full w-fit mb-4">
+                <img
+                  src={filtered[0].image}
+                  alt={filtered[0].title}
+                  className="w-full h-64 md:h-80 object-cover"
+                />
+                <div className="p-8 md:p-12 max-w-3xl mx-auto">
+                  <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full mb-4">
                     {filtered[0].category}
                   </span>
-                  <h2 className="font-heading text-2xl font-bold text-foreground mb-3">{filtered[0].title}</h2>
-                  <p className="text-muted-foreground mb-4">{filtered[0].excerpt}</p>
-                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-6">
-                    <span className="flex items-center gap-1"><User className="w-3 h-3" /> {filtered[0].author}</span>
-                    <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {filtered[0].date}</span>
-                    <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {filtered[0].readTime}</span>
-                  </div>
-                  <a href="#" className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline">
-                    Read More <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.slice(1).map((post, i) => (
-                <motion.article
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-all group"
-                >
-                  <div className="overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">
-                      {post.category}
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
+                    {filtered[0].title}
+                  </h2>
+                  <div className="flex items-center gap-4 text-xs text-muted-foreground mb-8">
+                    <span className="flex items-center gap-1">
+                      <User className="w-3 h-3" /> {filtered[0].author}
                     </span>
-                    <h3 className="font-heading font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{post.excerpt}</p>
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</span>
-                    </div>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" /> {filtered[0].date}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" /> {filtered[0].readTime}
+                    </span>
                   </div>
-                </motion.article>
-              ))}
-            </div>
+
+                  {/* Full Blog Content */}
+                  <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
+                    <p>
+                      Many pet parents think scratching is normal for dogs. While occasional scratching is completely natural, frequent scratching can sometimes indicate an underlying issue.
+                    </p>
+                    <p>
+                      Dogs may scratch due to skin dryness, allergies, parasites, or lack of proper skin nutrition. When this continues for long periods, it can lead to discomfort, skin irritation, and even hair loss.
+                    </p>
+
+                    <h3 className="text-xl font-bold text-foreground mt-8 mb-4">Common Reasons Dogs Scratch</h3>
+
+                    <div className="bg-section-alt rounded-2xl p-6 space-y-4">
+                      <div>
+                        <h4 className="font-bold text-foreground mb-1">1. Skin Dryness</h4>
+                        <p>Just like humans, dogs can experience dry skin. This can make them scratch frequently.</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-foreground mb-1">2. Allergies</h4>
+                        <p>Environmental allergies such as dust, pollen, or certain foods may trigger itching.</p>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-foreground mb-1">3. Poor Skin Nutrition</h4>
+                        <p>Healthy skin requires proper nutrients. Without them, the skin barrier becomes weak.</p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-foreground mt-8 mb-4">When Should You Be Concerned?</h3>
+                    <p>If you notice:</p>
+                    <ul className="list-disc list-inside space-y-2 ml-2">
+                      <li>Constant scratching</li>
+                      <li>Redness or irritation</li>
+                      <li>Hair loss in patches</li>
+                      <li>Excessive licking of paws</li>
+                    </ul>
+                    <p>It may be time to take a closer look at your dog's skin health.</p>
+
+                    <h3 className="text-xl font-bold text-foreground mt-8 mb-4">Supporting Your Dog's Skin Health</h3>
+                    <p>
+                      Maintaining a healthy coat and skin requires proper grooming and internal nutrition. Products designed to support skin health can help strengthen the skin barrier and improve overall coat condition.
+                    </p>
+                    <p>
+                      At Cadogs, our skin support solutions are designed to help pet parents care for their dogs before small signs become bigger problems.
+                    </p>
+                    <p className="text-foreground font-semibold text-lg mt-6">
+                      Because when your dog feels comfortable, it shows in their behavior, energy, and happiness.
+                    </p>
+                  </div>
+                </div>
+              </motion.article>
+            )}
           </div>
         </section>
       </main>
