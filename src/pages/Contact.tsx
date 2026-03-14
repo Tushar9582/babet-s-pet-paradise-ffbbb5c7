@@ -13,9 +13,9 @@ import { useToast } from "@/hooks/use-toast";
 import contactHeroBg from "@/assets/contact-hero-bg.jpg";
 
 const contactInfo = [
-  { icon: Phone, title: "Call Us", info: "+91 9158 888 345", sub: "Mon-Fri, 9am-6pm IST" },
-  { icon: Mail, title: "Email Us", info: "hello@cadogs.com", sub: "We reply within 24 hours" },
-  { icon: MapPin, title: "Visit Us", info: "123 Pet Street", sub: "New York, NY 10001" },
+  { icon: Phone, title: "Call / WhatsApp", info: "+91 74473 13137", sub: "Mon-Sat, 9am-8pm IST" },
+  { icon: Mail, title: "Email Us", info: "enquire@cadogs.info", sub: "We reply within 24 hours" },
+  { icon: MapPin, title: "Visit Us", info: "60, Rasta Peth, Neelkanth Tower", sub: "Near Swami Narayan Temple, Jews Street, Pune-411011" },
   { icon: Clock, title: "Working Hours", info: "Mon-Sat: 9AM-8PM", sub: "Sunday: 10AM-6PM" },
 ];
 
