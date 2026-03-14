@@ -143,7 +143,7 @@ const ContactPage = () => {
                 className="bg-card rounded-2xl border border-border overflow-hidden min-h-[400px] flex items-center justify-center"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25280924892!2d-74.11976373946234!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1704900000000!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.5!2d73.8567!3d18.5134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0e3c3c3c3c3%3A0x0!2sRasta%20Peth%2C%20Pune%2C%20Maharashtra%20411011!5e0!3m2!1sen!2sin!4v1704900000000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0, minHeight: 400 }}

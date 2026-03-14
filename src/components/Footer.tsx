@@ -34,14 +34,14 @@ const Footer = () => {
               India's trusted online store for premium veterinary dog products — flea & tick tablets, joint supplements, heart care, skin & coat support, and medicated shampoos.
             </p>
             <div className="flex flex-col gap-3 text-sm">
-              <a href="tel:+919158888345" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Phone className="w-4 h-4 text-primary" /> +91 9158 888 345
+              <a href="tel:+917447313137" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Phone className="w-4 h-4 text-primary" /> +91 74473 13137
               </a>
-              <a href="mailto:hello@cadogs.com" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Mail className="w-4 h-4 text-primary" /> hello@cadogs.com
+              <a href="mailto:enquire@cadogs.info" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail className="w-4 h-4 text-primary" /> enquire@cadogs.info
               </a>
               <span className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-primary" /> 123 Pet Street, NY 10001
+                <MapPin className="w-4 h-4 text-primary" /> 60, Rasta Peth, Neelkanth Tower, Pune-411011
               </span>
             </div>
           </div>

@@ -164,11 +164,11 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
                 ))}
               </nav>
               <a
-                href="tel:+919158888345"
+                href="tel:+917447313137"
                 className="mt-8 flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-full text-sm font-medium justify-center"
               >
                 <Phone className="w-4 h-4" />
-                +91 9158 888 345
+                +91 74473 13137
               </a>
             </motion.div>
           </>
