@@ -237,33 +237,46 @@ const BlogPage = () => {
               {gridPosts.map((post, index) => (
                 <motion.article
                   key={post.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="group bg-card rounded-2xl border border-border overflow-hidden cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  transition={{ delay: index * 0.07, duration: 0.4 }}
+                  className="group bg-card rounded-2xl border border-border overflow-hidden cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                 >
-                  <div className="relative h-52 overflow-hidden">
+                  {/* Image with overlay on hover */}
+                  <div className="relative h-56 overflow-hidden">
                     <img
                       src={post.image}
                       alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     />
-                    <span className="absolute bottom-3 left-3 bg-primary/90 text-primary-foreground text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    {/* Read more overlay text */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <span className="bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-lg">
+                        Read Article <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                    {/* Category badge */}
+                    <span className="absolute top-3 left-3 bg-primary/90 text-primary-foreground text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-md shadow-sm">
                       {post.category}
                     </span>
                   </div>
                   <div className="p-5">
-                    <div className="flex items-center gap-3 text-[11px] text-muted-foreground mb-3 uppercase tracking-wide">
-                      <span>{post.date}</span>
+                    <div className="flex items-center gap-3 text-[11px] text-muted-foreground mb-3 uppercase tracking-wider font-medium">
+                      <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {post.date}</span>
                       <span>·</span>
-                      <span>{post.readTime}</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</span>
                     </div>
-                    <h3 className="font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors leading-snug">
+                    <h3 className="font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-300 leading-snug text-[15px]">
                       {post.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed mb-3">
                       {post.excerpt}
                     </p>
+                    <div className="flex items-center gap-1.5 text-primary text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Read More <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
                 </motion.article>
               ))}
