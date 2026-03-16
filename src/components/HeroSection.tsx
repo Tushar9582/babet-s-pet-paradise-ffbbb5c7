@@ -1,33 +1,32 @@
-import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination } from "swiper/modules";
-import { motion } from "framer-motion";
 import { ArrowRight, PawPrint } from "lucide-react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 
-import heroPet1 from "@/assets/hero-pet-1.png";
-import heroPet2 from "@/assets/hero-pet-2.png";
+import heroDogHappy from "@/assets/hero-dog-happy.jpg";
+import heroGsd from "@/assets/hero-gsd.jpg";
+import heroDalmatian from "@/assets/hero-dalmatian.jpg";
 
 const slides = [
   {
-    subtitle: "Veterinary Dog Supplements",
-    title: "Premium Health Products for Dogs",
-    description: "Trusted flea & tick treatment, joint supplements, and heart care tablets — vet-recommended for every breed.",
-    image: heroPet1,
-  },
-  {
     subtitle: "Flea & Tick Protection",
     title: "Exotix Fluralaner Chewable Tablets",
-    description: "12-week flea and tick protection for dogs. Fast-acting, long-lasting veterinary-grade treatment.",
-    image: heroPet2,
+    description: "12-week flea and tick protection for dogs. Fast-acting, long-lasting veterinary-grade chewable tablets for every breed.",
+    image: heroDogHappy,
   },
   {
-    subtitle: "Dog Joint & Heart Care",
-    title: "Supplements Your Dog Deserves",
-    description: "Glucosamine joint support, heart health tablets, and skin & coat supplements — backed by veterinary science.",
-    image: heroPet1,
+    subtitle: "Joint & Mobility Support",
+    title: "Prime Joint — Move Without Pain",
+    description: "Glucosamine-based joint support supplement for dogs. Vet-recommended for aging joints, stiffness, and active breed mobility.",
+    image: heroGsd,
+  },
+  {
+    subtitle: "Skin, Coat & Heart Care",
+    title: "ShowCharge & Furlux — Complete Wellness",
+    description: "Heart health tablets and skin & coat supplements backed by veterinary science. Give your dog the care they deserve.",
+    image: heroDalmatian,
   },
 ];
 
@@ -78,7 +77,7 @@ const HeroSection = () => {
                   <img
                     src={slide.image}
                     alt={slide.subtitle}
-                    className="w-full max-w-md lg:max-w-lg rounded-3xl object-cover"
+                    className="w-full max-w-md lg:max-w-lg rounded-3xl object-cover aspect-[4/5] shadow-xl"
                   />
                 </div>
               </div>
