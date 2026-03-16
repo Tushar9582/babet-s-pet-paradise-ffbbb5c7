@@ -134,8 +134,8 @@ export const products: Product[] = [
   {
     id: "furlux-skin",
     name: "Furlux Skin & Coat",
-    form: "60 Chewable Tablets",
-    price: 1335,
+    form: "30 Chewable Tablets",
+    price: 800,
     image: furluxImg,
     rating: 5,
     reviews: 37,
