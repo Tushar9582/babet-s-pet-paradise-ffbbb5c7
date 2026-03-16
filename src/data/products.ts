@@ -170,6 +170,26 @@ export const products: Product[] = [
     precautions: "External use only; avoid eyes/mucous membranes; patch test recommended.",
     packing: "1×200ml Bottle",
   },
+  {
+    id: "furmuffin-skin",
+    name: "Furmuffin Skin & Coat",
+    form: "30 Chewable Tablets",
+    price: 360,
+    image: furmuffinImg,
+    rating: 5,
+    reviews: 29,
+    badge: "New",
+    category: "Skin Care",
+    sku: "FMF-30",
+    tags: ["Skin", "Coat", "Dog", "Supplement", "Pigmentation"],
+    description: "Skin, coat & pigmentation support chewable tablets for dogs. Human grade API with Biotin, Zinc & Seaweed Extract.",
+    indications: "Healthy skin, strong shiny coat, optimal pigmentation (coat, nose, paw pads), firm claws.",
+    composition: "Biotin, Zinc, Vitamin E, Ascophyllum Nodosum (Seaweed Extract)",
+    dosage: "<10 kg – ½ tab daily. 10–20 kg – 1 tab daily. >20 kg – 1½ tabs daily.",
+    mechanism: "Biotin (keratin synthesis), Zinc (wound healing & coat health), Vitamin E (antioxidant protection), Seaweed extract (Omega-3, iodine for melanin production).",
+    precautions: "Caution in hyperthyroid or copper-sensitive dogs. Consult vet before use.",
+    packing: "1×30 Bottle",
+  },
 ];
 
 export const categories = ["All", "Flea & Tick", "Joint Care", "Heart Care", "Skin Care", "Shampoo"];
