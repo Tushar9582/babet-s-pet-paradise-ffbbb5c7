@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ShoppingCart, Heart, Phone, Menu, X } from "lucide-react";
 import logo from "@/assets/cadogs-logo.jpeg";
 import { useWishlist } from "@/context/WishlistContext";
+import { products } from "@/data/products";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -14,6 +15,15 @@ const NAV_LINKS = [
   { label: "Contact", to: "/contact" },
 ];
 
+const PAGES = [
+  { title: "Home", path: "/", keywords: ["home", "cadogs", "pet", "dog", "welcome"] },
+  { title: "About Us", path: "/about", keywords: ["about", "story", "mission", "vision", "cadogs", "who we are"] },
+  { title: "Services", path: "/services", keywords: ["services", "delivery", "order", "how it works"] },
+  { title: "Shop", path: "/shop", keywords: ["shop", "products", "buy", "store"] },
+  { title: "Blog", path: "/blog", keywords: ["blog", "articles", "tips", "guides", "health"] },
+  { title: "Contact", path: "/contact", keywords: ["contact", "phone", "email", "address", "faq"] },
+];
+
 interface HeaderProps {
   cartCount: number;
   onCartClick: () => void;
@@ -22,12 +32,51 @@ interface HeaderProps {
 const Header = ({ cartCount, onCartClick }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<{ type: string; title: string; path: string }[]>([]);
   const location = useLocation();
+  const navigate = useNavigate();
   const { totalWishlist, setWishlistOpen } = useWishlist();
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      return;
+    }
+    const q = searchQuery.toLowerCase();
+    const results: { type: string; title: string; path: string }[] = [];
+
+    // Search pages
+    PAGES.forEach((page) => {
+      if (page.title.toLowerCase().includes(q) || page.keywords.some((k) => k.includes(q))) {
+        results.push({ type: "Page", title: page.title, path: page.path });
+      }
+    });
+
+    // Search products
+    products.forEach((p) => {
+      if (p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.tags.some((t) => t.toLowerCase().includes(q))) {
+        results.push({ type: "Product", title: p.name, path: `/shop?category=${encodeURIComponent(p.category)}` });
+      }
+    });
+
+    setSearchResults(results.slice(0, 8));
+  }, [searchQuery]);
+
+  useEffect(() => {
+    setSearchOpen(false);
+    setSearchQuery("");
+  }, [location.pathname]);
+
+  const handleResultClick = (path: string) => {
+    navigate(path);
+    setSearchOpen(false);
+    setSearchQuery("");
+  };
 
   return (
     <>
-
       {/* Main header */}
       <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-md shadow-sm">
         <div className="container flex items-center justify-between py-3 gap-4">
@@ -103,18 +152,42 @@ const Header = ({ cartCount, onCartClick }: HeaderProps) => {
         <AnimatePresence>
           {searchOpen && (
             <motion.div
+              ref={searchRef}
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               className="border-t border-border overflow-hidden"
             >
-              <div className="container py-3">
+              <div className="container py-3 relative">
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Search products, pages..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-muted rounded-full px-5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary"
                   autoFocus
                 />
+                {searchResults.length > 0 && (
+                  <div className="absolute left-0 right-0 top-full mt-1 mx-4 bg-card border border-border rounded-xl shadow-xl z-50 overflow-hidden">
+                    {searchResults.map((r, i) => (
+                      <button
+                        key={i}
+                        onClick={() => handleResultClick(r.path)}
+                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-muted transition-colors text-left border-b border-border last:border-0"
+                      >
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                          {r.type}
+                        </span>
+                        <span className="text-sm text-foreground">{r.title}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+                {searchQuery.trim() && searchResults.length === 0 && (
+                  <div className="absolute left-0 right-0 top-full mt-1 mx-4 bg-card border border-border rounded-xl shadow-xl z-50 p-4 text-center">
+                    <p className="text-sm text-muted-foreground">No results found for "{searchQuery}"</p>
+                  </div>
+                )}
               </div>
             </motion.div>
           )}

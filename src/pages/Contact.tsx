@@ -164,10 +164,18 @@ const ContactPage = () => {
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">Frequently Asked Questions</h2>
             </div>
             {[
-              { q: "What are your shipping options?", a: "We offer free shipping on orders over $120. Standard shipping takes 3-5 business days, and express shipping is available for 1-2 day delivery." },
-              { q: "What is your return policy?", a: "We offer a 7-day money-back guarantee on all products. If your pet doesn't love it, we'll refund your purchase — no questions asked." },
-              { q: "Do you offer subscriptions?", a: "Yes! Subscribe to any product and save 15% on every recurring order. You can pause, skip, or cancel anytime." },
-              { q: "Are your products natural?", a: "We prioritize natural, organic products. Every item in our store is vetted by our veterinary advisors to ensure safety and quality." },
+              { q: "What is Furlux used for?", a: "Furlux is a veterinary nutritional supplement designed to support healthy skin, improve coat quality, enhance pigmentation, and boost overall immunity in dogs." },
+              { q: "How does Furlux improve coat and skin health?", a: "It contains biotin, zinc, amino acids, and seaweed extract that help support keratin production, reduce inflammation, and nourish hair follicles—resulting in a stronger, shinier coat." },
+              { q: "When can I expect visible results from Furlux?", a: "Visible improvements in coat shine and texture are typically seen within 3–4 weeks of regular use." },
+              { q: "What is Keramaxy Vet Shampoo used for?", a: "Keramaxy Vet is a deep-cleansing, antibacterial, antifungal, and keratolytic shampoo used to treat skin infections, dandruff, itching, and scaling in pets." },
+              { q: "How often should I use Keramaxy Shampoo?", a: "Acute phase: 2–3 times per week. Maintenance: Once every 7–10 days. Or as advised by your veterinarian." },
+              { q: "What is Exotix used for?", a: "Exotix is an oral chewable tablet that provides long-lasting protection against fleas, ticks, and mites in dogs. A single dose provides protection for up to 12 weeks (3 months)." },
+              { q: "How fast does Exotix work?", a: "It starts killing fleas within 2–4 hours and provides continuous protection." },
+              { q: "What is Show Charge used for?", a: "Show Charge is a comprehensive heart support supplement for dogs and cats that improves cardiac function, stamina, and overall vitality using L-Carnitine, Taurine, and CoQ10." },
+              { q: "What is Prime used for?", a: "Prime is a joint support supplement that helps manage arthritis, joint pain, stiffness, and mobility issues in dogs using glucosamine, chondroitin, collagen, and hyaluronic acid." },
+              { q: "Can Prime be used preventively?", a: "Yes, it can be used long-term to help prevent joint degeneration in at-risk breeds. Most dogs show improved mobility within a few weeks of regular use." },
+              { q: "Are your products safe for long-term use?", a: "Yes, all our supplements are safe for long-term use when used under veterinary guidance. Always give with or after food for best absorption." },
+              { q: "What are your shipping options?", a: "We offer delivery across India. Orders are processed within 24 hours and typically delivered within 3-5 business days." },
             ].map((faq, i) => (
               <details key={i} className="bg-card rounded-xl border border-border p-5 mb-3 group">
                 <summary className="font-heading font-semibold text-foreground cursor-pointer list-none flex items-center justify-between">

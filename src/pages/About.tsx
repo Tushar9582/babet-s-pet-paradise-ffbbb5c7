@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
 import { PawPrint, Heart, Target, Eye } from "lucide-react";
-import cadogsHero from "@/assets/cadogs-hero.jpeg";
+import cadogsLogo from "@/assets/cadogs-logo.jpeg";
 import aboutHeroBg from "@/assets/about-hero-bg.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -48,7 +48,7 @@ const AboutPage = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex justify-center"
               >
-                <img src={cadogsHero} alt="Cadogs — Preventive Dog Wellness" className="rounded-3xl max-w-md w-full shadow-xl" />
+                <img src={cadogsLogo} alt="Cadogs Logo" className="rounded-3xl max-w-xs w-full shadow-xl" />
               </motion.div>
             </div>
           </div>
