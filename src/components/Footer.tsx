@@ -11,7 +11,11 @@ const quickLinks = [
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ];
-const resources = ["FAQ", "Testimonials", "Gallery", "Team", "Pricing"];
+const resources = [
+  { label: "FAQ", to: "/contact" },
+  { label: "Gallery", to: "/gallery" },
+  { label: "Blog", to: "/blog" },
+];
 const services = ["Flea & Tick Treatment", "Joint Supplements", "Heart Care", "Skin & Coat", "Dog Shampoo"];
 
 const Footer = () => {
