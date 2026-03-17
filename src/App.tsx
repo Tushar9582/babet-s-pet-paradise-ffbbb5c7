@@ -13,6 +13,7 @@ const Services = lazy(() => import("./pages/Services"));
 const Shop = lazy(() => import("./pages/Shop"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Gallery = lazy(() => import("./pages/Gallery"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
