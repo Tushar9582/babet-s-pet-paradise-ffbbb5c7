@@ -59,7 +59,7 @@ export const products: Product[] = [
     name: "Exotix Fluralaner 500mg",
     generic: "Fluralaner",
     form: "Chewable Tablet",
-    price: 816,
+    price: 870,
     image: exotix500,
     rating: 5,
     reviews: 38,
