@@ -35,7 +35,7 @@ const OrderHistory = () => {
         .from("order_history")
         .select("*")
         .order("created_at", { ascending: false });
-      if (data) setOrders(data as Order[]);
+      if (data) setOrders(data as unknown as Order[]);
       setLoading(false);
     };
     fetchOrders();
