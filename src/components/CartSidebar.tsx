@@ -1,28 +1,50 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Minus, Plus, ShoppingCart, Trash2, MessageCircle } from "lucide-react";
+import { X, Minus, Plus, ShoppingCart, Trash2, MessageCircle, LogIn } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const CartSidebar = () => {
   const { items, updateQty, removeFromCart, totalItems, subtotal, cartOpen, setCartOpen } = useCart();
+  const { user } = useAuth();
+  const { toast } = useToast();
+
+  const handleWhatsAppOrder = async () => {
+    if (!user) return;
+
+    // Save order to history
+    const orderItems = items.map((i) => ({
+      name: i.product.name,
+      qty: i.qty,
+      price: i.product.price,
+    }));
+
+    await supabase.from("order_history").insert({
+      user_id: user.id,
+      items: orderItems as any,
+      subtotal,
+      status: "pending",
+    });
+
+    toast({ title: "Order saved!", description: "Your order has been recorded." });
+
+    // Open WhatsApp
+    const shopUrl = `${window.location.origin}/shop`;
+    const lines = items.map(
+      (i) => `- ${i.product.name} x ${i.qty} = ₹${(i.product.price * i.qty).toLocaleString()}`
+    );
+    const msg = `Hello, I want to order the following products from Cadogs:\n${lines.join("\n")}\nTotal: ₹${subtotal.toLocaleString()}\n\nView products: ${shopUrl}\nPlease confirm availability and payment.`;
+    window.open(`https://wa.me/917447313137?text=${encodeURIComponent(msg)}`, "_blank");
+  };
 
   return (
     <AnimatePresence>
       {cartOpen && (
         <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-foreground z-50"
-            onClick={() => setCartOpen(false)}
-          />
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25 }}
-            className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-card z-50 shadow-2xl flex flex-col"
-          >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 0.5 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-foreground z-50" onClick={() => setCartOpen(false)} />
+          <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25 }} className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-card z-50 shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-6 border-b border-border">
               <div className="flex items-center gap-2">
                 <ShoppingCart className="w-5 h-5 text-primary" />
@@ -65,40 +87,34 @@ const CartSidebar = () => {
                 <span>Subtotal</span>
                 <span className="text-primary">₹{subtotal.toLocaleString()}</span>
               </div>
-              {items.length > 0 ? (
-                <a
-                  href={(() => {
-                    const shopUrl = `${window.location.origin}/shop`;
-                    const lines = items.map(
-                      (i) => `- ${i.product.name} x ${i.qty} = ₹${(i.product.price * i.qty).toLocaleString()}`
-                    );
-                    const msg = `Hello, I want to order the following products from Cadogs:\n${lines.join("\n")}\nTotal: ₹${subtotal.toLocaleString()}\n\nView products: ${shopUrl}\nPlease confirm availability and payment.`;
-                    return `https://wa.me/917447313137?text=${encodeURIComponent(msg)}`;
-                  })()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity"
+
+              {!user && items.length > 0 && (
+                <Link
+                  to="/auth"
+                  onClick={() => setCartOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  Order via WhatsApp
-                </a>
-              ) : (
+                  <LogIn className="w-4 h-4" />
+                  Sign in to Order
+                </Link>
+              )}
+
+              {user && items.length > 0 && (
                 <button
-                  disabled
-                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-full font-semibold text-sm opacity-50 cursor-not-allowed"
+                  onClick={handleWhatsAppOrder}
+                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity"
                 >
                   <MessageCircle className="w-4 h-4" />
                   Order via WhatsApp
                 </button>
               )}
-              <div className="grid grid-cols-2 gap-3">
-                <a href="#" className="border-2 border-primary text-primary text-center py-3 rounded-full font-semibold text-sm hover:bg-primary hover:text-primary-foreground transition-colors">
-                  View Cart
-                </a>
-                <a href="#" className="bg-primary text-primary-foreground text-center py-3 rounded-full font-semibold text-sm hover:opacity-90 transition-opacity">
-                  Checkout
-                </a>
-              </div>
+
+              {items.length === 0 && (
+                <button disabled className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 rounded-full font-semibold text-sm opacity-50 cursor-not-allowed">
+                  <MessageCircle className="w-4 h-4" />
+                  Order via WhatsApp
+                </button>
+              )}
             </div>
           </motion.div>
         </>
