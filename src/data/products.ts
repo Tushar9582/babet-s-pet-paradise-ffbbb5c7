@@ -7,7 +7,7 @@ import keramaxy from "@/assets/keramaxy-shampoo.jpg";
 import furluxImg from "@/assets/furlux-product.jpg";
 import furmuffinImg from "@/assets/furmuffin-box.jpg";
 import furmuffinSmallImg from "@/assets/furmuffin-small.jpg";
-import hipJointImg from "@/assets/hip-joint-shield.jpg";
+// import hipJointImg from "@/assets/hip-joint-shield.jpg";
 
 export interface Product {
   id: string;
@@ -99,7 +99,7 @@ export const products: Product[] = [
     id: "prime-joint",
     name: "Prime Joint Support",
     form: "60 Chewable Tablets",
-    price: 1335,
+    price: 1500,
     image: primeJoint,
     rating: 5,
     reviews: 56,
@@ -213,26 +213,26 @@ export const products: Product[] = [
     precautions: "Caution in hyperthyroid or copper-sensitive dogs. Consult vet before use.",
     packing: "1×30 Bottle",
   },
-  {
-    id: "hip-joint-shield",
-    name: "Hip & Joint Shield",
-    form: "60 Chewable Tablets",
-    price: 1500,
-    image: hipJointImg,
-    rating: 5,
-    reviews: 34,
-    badge: "New",
-    category: "Joint Care",
-    sku: "HJS-60",
-    tags: ["Joint", "Hip", "Dog", "Supplement", "Chewable"],
-    description: "Complete hip & joint supplement for dogs. Human grade API with 60 chewable tablets for optimal joint health.",
-    indications: "Hip & joint support, arthritis/osteoarthritis, age-related joint wear, post-operative recovery, stiffness, limping.",
-    composition: "Glucosamine, Chondroitin, MSM, Hyaluronic Acid, Boswellia Serrata Extract, Collagen Type 2, Vitamin C, Vitamin E, Selenium",
-    dosage: "Up to 10 kg – ½ tablet daily. 11–25 kg – 1 tablet daily. 26–40 kg – 1½ tablets daily. Above 40 kg – 2 tablets daily.",
-    mechanism: "Glucosamine (cartilage repair), Chondroitin (prevents breakdown), MSM (collagen synthesis/pain relief), Hyaluronic Acid (lubrication), Boswellia (anti-inflammatory).",
-    precautions: "Avoid in pregnant/lactating unless advised; caution in diabetes/clotting disorders. Consult vet before use.",
-    packing: "1×60 Bottle",
-  },
+  // {
+  //   id: "hip-joint-shield",
+  //   name: "Hip & Joint Shield",
+  //   form: "60 Chewable Tablets",
+  //   price: 1500,
+  //   image: hipJointImg,
+  //   rating: 5,
+  //   reviews: 34,
+  //   badge: "New",
+  //   category: "Joint Care",
+  //   sku: "HJS-60",
+  //   tags: ["Joint", "Hip", "Dog", "Supplement", "Chewable"],
+  //   description: "Complete hip & joint supplement for dogs. Human grade API with 60 chewable tablets for optimal joint health.",
+  //   indications: "Hip & joint support, arthritis/osteoarthritis, age-related joint wear, post-operative recovery, stiffness, limping.",
+  //   composition: "Glucosamine, Chondroitin, MSM, Hyaluronic Acid, Boswellia Serrata Extract, Collagen Type 2, Vitamin C, Vitamin E, Selenium",
+  //   dosage: "Up to 10 kg – ½ tablet daily. 11–25 kg – 1 tablet daily. 26–40 kg – 1½ tablets daily. Above 40 kg – 2 tablets daily.",
+  //   mechanism: "Glucosamine (cartilage repair), Chondroitin (prevents breakdown), MSM (collagen synthesis/pain relief), Hyaluronic Acid (lubrication), Boswellia (anti-inflammatory).",
+  //   precautions: "Avoid in pregnant/lactating unless advised; caution in diabetes/clotting disorders. Consult vet before use.",
+  //   packing: "1×60 Bottle",
+  // },
 ];
 
 export const categories = ["All", "Flea & Tick", "Joint Care", "Heart Care", "Skin Care", "Shampoo"];
