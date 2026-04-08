@@ -1,13 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Palette } from "lucide-react";
 
+// Only green color remains
 const COLORS = [
-  { name: "Coral", hsl: "10 95% 61%", hex: "#FF4F38" },
-  { name: "Blue", hsl: "215 98% 59%", hex: "#3282FB" },
-  { name: "Purple", hsl: "261 95% 59%", hex: "#6D30FB" },
   { name: "Green", hsl: "145 60% 42%", hex: "#27AE60" },
-  { name: "Orange", hsl: "29 100% 50%", hex: "#FF7E02" },
 ];
 
 const ColorSwitcher = () => {
@@ -19,6 +16,11 @@ const ColorSwitcher = () => {
     document.documentElement.style.setProperty("--ring", hsl);
     document.documentElement.style.setProperty("--countdown-bg", hsl);
   };
+
+  // Set green as the default theme on mount
+  useEffect(() => {
+    changeColor(COLORS[0].hsl);
+  }, []);
 
   return (
     <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
