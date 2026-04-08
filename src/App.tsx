@@ -16,6 +16,7 @@ const Blog = lazy(() => import("./pages/Blog"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const Auth = lazy(() => import("./pages/Auth"));
+const AuthCallback = lazy(() => import("./pages/AuthCallback"));
 const OrderHistory = lazy(() => import("./pages/OrderHistory"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -39,8 +40,14 @@ const App = () => (
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/gallery" element={<Gallery />} />
+                  
+                  {/* Auth Routes */}
                   <Route path="/auth" element={<Auth />} />
+                  <Route path="/auth/callback" element={<AuthCallback />} />
+
                   <Route path="/orders" element={<OrderHistory />} />
+                  
+                  {/* 404 */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
