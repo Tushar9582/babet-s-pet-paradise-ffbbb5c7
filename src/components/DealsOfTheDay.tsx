@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { PawPrint, ArrowRight } from "lucide-react";
 import dealProduct from "@/assets/exotix-1000mg.jpg";
 
@@ -24,52 +25,58 @@ const DealsOfTheDay = () => {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 bg-section-alt relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/5" />
-      <div className="absolute bottom-10 -left-10 w-32 h-32 rounded-full bg-primary/5" />
-
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
-          {/* Text side */}
-          <div>
-            <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-3">
+    <section className="py-20 md:py-28 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 text-primary font-medium text-sm mb-4">
               <PawPrint className="w-4 h-4" /> Limited Time
             </div>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
               The Best Food For Your Pet!
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-md">
+            <div className="section-divider mt-4 mb-4 !mx-0" />
+            <p className="text-muted-foreground mb-8 max-w-md leading-relaxed">
               Don't miss out on our special deal of the day. Premium nutrition at an unbeatable price for your furry friends.
             </p>
 
-            {/* Countdown */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-8">
               {Object.entries(timeLeft).map(([label, value]) => (
-                <div key={label} className="bg-primary text-primary-foreground rounded-xl px-3 sm:px-4 py-2 sm:py-3 text-center min-w-[60px] sm:min-w-[70px]">
-                  <span className="text-xl sm:text-2xl font-bold block">{String(value).padStart(2, "0")}</span>
-                  <span className="text-[9px] sm:text-[10px] uppercase tracking-wider opacity-80">{label}</span>
+                <div key={label} className="bg-primary text-primary-foreground rounded-2xl px-4 py-3 text-center min-w-[72px]" style={{ boxShadow: '0 4px 14px hsl(var(--primary) / 0.25)' }}>
+                  <span className="text-2xl font-bold block tracking-tight">{String(value).padStart(2, "0")}</span>
+                  <span className="text-[10px] uppercase tracking-wider opacity-80">{label}</span>
                 </div>
               ))}
             </div>
 
             <a
               href="#"
-              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-semibold hover:opacity-90 transition-opacity shadow-lg"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5"
             >
               Shop Now
               <ArrowRight className="w-5 h-5" />
             </a>
-          </div>
+          </motion.div>
 
-          {/* Image side */}
-          <div className="flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center"
+          >
             <img
               src={dealProduct}
               alt="Deal product"
               className="w-full max-w-sm lg:max-w-md rounded-3xl animate-float"
+              style={{ boxShadow: '0 25px 60px -12px rgb(0 0 0 / 0.1)' }}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
