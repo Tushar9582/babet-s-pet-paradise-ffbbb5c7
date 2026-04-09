@@ -4,10 +4,10 @@ import { Star, PawPrint } from "lucide-react";
 import "swiper/css";
 
 const testimonials = [
-  { name: "Sarah Johnson", role: "Dog Owner", text: "Cadogs has the best selection of natural dog food. My Golden Retriever loves every single product I've ordered!", rating: 5 },
-  { name: "Mike Chen", role: "Cat Lover", text: "Finally found a pet shop that truly cares about quality. The cat treats are amazing and my cats go crazy for them.", rating: 5 },
-  { name: "Emily Davis", role: "Pet Parent", text: "The customer service is outstanding. They helped me find the perfect food for my senior dog with dietary needs.", rating: 5 },
-  { name: "Alex Rivera", role: "Multi-pet Owner", text: "I have both dogs and cats, and Cadogs has everything I need in one place. Great prices too!", rating: 5 },
+  { name: "Rohit Sharma", role: "Dog Owner", text: "Cadogs has the best selection of natural dog food. My Golden Retriever loves every single product I've ordered!", rating: 5 },
+  { name: "Priya Deshmukh", role: "Cat Lover", text: "Finally found a pet shop that truly cares about quality. The cat treats are amazing and my cats go crazy for them.", rating: 5 },
+  { name: "Ankit Patil", role: "Pet Parent", text: "The customer service is outstanding. They helped me find the perfect food for my senior dog with dietary needs.", rating: 5 },
+  { name: "Sneha Kulkarni", role: "Multi-pet Owner", text: "I have both dogs and cats, and Cadogs has everything I need in one place. Great prices too!", rating: 5 },
 ];
 
 const TestimonialsSection = () => {
