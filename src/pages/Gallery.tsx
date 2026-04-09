@@ -13,12 +13,14 @@ import { useCart } from "@/context/CartContext";
 import galleryGirlGsd from "@/assets/gallery-girl-gsd.jpg";
 import galleryTrophy from "@/assets/gallery-trophy.jpg";
 import galleryGsdPuppy from "@/assets/gallery-gsd-puppy.jpg";
+import galleryNewDog from "@/assets/gallery-new-dog.jpg";
 import aboutHeroBg from "@/assets/about-hero-bg.jpg";
 
 const galleryImages = [
   { src: galleryGirlGsd, title: "Girl with German Shepherd", category: "Community" },
   { src: galleryTrophy, title: "SG-1 Winner — Dog Show", category: "Community" },
   { src: galleryGsdPuppy, title: "GSD Puppy in Training", category: "Happy Pets" },
+  { src: galleryNewDog, title: "Our Beloved Companion", category: "Happy Pets" },
 ];
 
 const categories = ["All", "Products", "Community", "Happy Pets", "Care"];

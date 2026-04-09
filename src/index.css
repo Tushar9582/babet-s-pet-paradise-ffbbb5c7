@@ -9,7 +9,7 @@
     --theme-color: 10 95% 61%;
     --theme-color-rgb: 255, 79, 56;
     
-    --background: 30 30% 98%;
+    --background: 0 0% 100%;
     --foreground: 20 20% 15%;
 
     --card: 0 0% 100%;
@@ -21,20 +21,20 @@
     --primary: 10 95% 61%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 80% 95%;
+    --secondary: 0 0% 96%;
     --secondary-foreground: 20 20% 15%;
 
-    --muted: 30 20% 94%;
-    --muted-foreground: 20 10% 50%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 35 80% 95%;
-    --accent-foreground: 20 20% 15%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 15% 90%;
-    --input: 30 15% 90%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
     --ring: 10 95% 61%;
 
     --radius: 0.75rem;
@@ -49,8 +49,8 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
 
     /* Custom tokens */
-    --hero-bg: 30 50% 96%;
-    --section-alt-bg: 35 40% 97%;
+    --hero-bg: 0 0% 100%;
+    --section-alt-bg: 0 0% 98%;
     --badge-new: 142 70% 45%;
     --badge-new-foreground: 0 0% 100%;
     --footer-bg: 20 25% 12%;
