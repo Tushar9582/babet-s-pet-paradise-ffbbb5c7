@@ -23,7 +23,7 @@ export default {
     extend: {
       fontFamily: {
         heading: ["Fredoka", "sans-serif"],
-        body: ["Onest", "sans-serif"],
+        body: ["'Plus Jakarta Sans'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
