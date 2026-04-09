@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Truck, RotateCcw, Crown, Headphones } from "lucide-react";
 
 const features = [
@@ -10,30 +9,19 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-muted/30 to-background">
+    <section className="py-16 md:py-20 bg-section-alt">
       <div className="container">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {features.map((f, i) => {
             const Icon = f.icon;
             return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                whileHover={{ y: -4 }}
-                className="bg-card rounded-[18px] p-6 md:p-8 text-center border border-border transition-all duration-300"
-                style={{ boxShadow: 'var(--shadow-card)' }}
-                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)')}
-                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'var(--shadow-card)')}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-primary/8 text-primary flex items-center justify-center mx-auto mb-5 group-hover:bg-primary transition-all duration-300">
+              <div key={i} className="bg-card rounded-2xl p-6 text-center border border-border hover:shadow-lg hover:border-primary/20 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
                   <Icon className="w-7 h-7" />
                 </div>
-                <h3 className="font-heading font-bold text-foreground mb-2 text-base">{f.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{f.desc}</p>
-              </motion.div>
+                <h3 className="font-heading font-semibold text-foreground mb-1">{f.title}</h3>
+                <p className="text-xs text-muted-foreground">{f.desc}</p>
+              </div>
             );
           })}
         </div>
