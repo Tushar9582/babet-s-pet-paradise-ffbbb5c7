@@ -1,7 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Pagination } from "swiper/modules";
 import { ArrowRight, PawPrint } from "lucide-react";
-import { motion } from "framer-motion";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
@@ -33,9 +32,11 @@ const slides = [
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-gradient-to-b from-muted/30 to-background overflow-hidden">
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+    <section className="relative bg-hero-bg overflow-hidden">
+      {/* Decorative shapes */}
+      <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-primary/10 animate-float" />
+      <div className="absolute bottom-20 right-20 w-32 h-32 rounded-full bg-secondary animate-bounce-soft" />
+      <div className="absolute top-1/2 left-1/4 w-4 h-4 rounded-full bg-primary/30 animate-pulse" />
 
       <Swiper
         modules={[EffectFade, Autoplay, Pagination]}
@@ -48,52 +49,37 @@ const HeroSection = () => {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="container py-16 md:py-24 lg:py-32">
-              <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="container py-12 md:py-20 lg:py-28">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
                 {/* Text */}
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="text-center lg:text-left"
-                >
-                  <div className="inline-flex items-center gap-2 bg-primary/8 text-primary px-4 py-1.5 rounded-lg text-sm font-medium mb-5 border border-primary/10">
+                <div className="text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-4">
                     <PawPrint className="w-4 h-4" />
                     {slide.subtitle}
                   </div>
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold text-foreground leading-[1.15] mb-5 tracking-tight">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
                     {slide.title}
                   </h1>
-                  <p className="text-muted-foreground text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                  <p className="text-muted-foreground text-base lg:text-lg mb-8 max-w-lg mx-auto lg:mx-0">
                     {slide.description}
                   </p>
                   <a
                     href="#products"
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-full font-semibold hover:opacity-90 transition-opacity shadow-lg"
                   >
                     Explore Products
                     <ArrowRight className="w-5 h-5" />
                   </a>
-                </motion.div>
+                </div>
 
                 {/* Image */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="flex justify-center"
-                >
-                  <div className="relative">
-                    <img
-                      src={slide.image}
-                      alt={slide.subtitle}
-                      className="w-full max-w-md lg:max-w-lg rounded-3xl object-cover aspect-[4/5]"
-                      style={{ boxShadow: '0 25px 60px -12px rgb(0 0 0 / 0.12)' }}
-                    />
-                    {/* Decorative ring */}
-                    <div className="absolute -inset-3 rounded-[2rem] border border-primary/10 -z-10" />
-                  </div>
-                </motion.div>
+                <div className="flex justify-center">
+                  <img
+                    src={slide.image}
+                    alt={slide.subtitle}
+                    className="w-full max-w-md lg:max-w-lg rounded-3xl object-cover aspect-[4/5] shadow-xl"
+                  />
+                </div>
               </div>
             </div>
           </SwiperSlide>
