@@ -5,6 +5,7 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { createPendingOrderRecord, saveOrderHistoryLocally } from "@/lib/orderHistory";
 
 const CartSidebar = () => {
   const { items, updateQty, removeFromCart, totalItems, subtotal, cartOpen, setCartOpen } = useCart();
@@ -14,35 +15,40 @@ const CartSidebar = () => {
   const handleWhatsAppOrder = async () => {
     if (!user) return;
 
-    // Save order to history
     const orderItems = items.map((i) => ({
       name: i.product.name,
       qty: i.qty,
       price: i.product.price,
     }));
 
+    const localOrder = createPendingOrderRecord(orderItems, subtotal);
+    const shopUrl = `${window.location.origin}/shop`;
+    const lines = items.map(
+      (i) => `- ${i.product.name} x ${i.qty} = ₹${(i.product.price * i.qty).toLocaleString()}`,
+    );
+    const msg = `Hello, I want to order the following products from Cadogs:\n${lines.join("\n")}\nTotal: ₹${subtotal.toLocaleString()}\n\nView products: ${shopUrl}\nPlease confirm availability and payment.`;
+    const whatsappUrl = `https://wa.me/917447313137?text=${encodeURIComponent(msg)}`;
+
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+
     const { error } = await supabase.from("order_history").insert({
       user_id: user.id,
-      items: orderItems as any,
+      items: orderItems,
       subtotal,
       status: "pending",
     });
 
     if (error) {
       console.error("Order save error:", error);
-      toast({ title: "Error saving order", description: error.message, variant: "destructive" });
+      saveOrderHistoryLocally(user.id, localOrder);
+      toast({
+        title: "WhatsApp opened",
+        description: "Order history has been saved on this device.",
+      });
       return;
     }
 
     toast({ title: "Order saved!", description: "Your order has been recorded." });
-
-    // Open WhatsApp
-    const shopUrl = `${window.location.origin}/shop`;
-    const lines = items.map(
-      (i) => `- ${i.product.name} x ${i.qty} = ₹${(i.product.price * i.qty).toLocaleString()}`
-    );
-    const msg = `Hello, I want to order the following products from Cadogs:\n${lines.join("\n")}\nTotal: ₹${subtotal.toLocaleString()}\n\nView products: ${shopUrl}\nPlease confirm availability and payment.`;
-    window.open(`https://wa.me/917447313137?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   return (
