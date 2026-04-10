@@ -21,12 +21,18 @@ const CartSidebar = () => {
       price: i.product.price,
     }));
 
-    await supabase.from("order_history").insert({
+    const { error } = await supabase.from("order_history").insert({
       user_id: user.id,
       items: orderItems as any,
       subtotal,
       status: "pending",
     });
+
+    if (error) {
+      console.error("Order save error:", error);
+      toast({ title: "Error saving order", description: error.message, variant: "destructive" });
+      return;
+    }
 
     toast({ title: "Order saved!", description: "Your order has been recorded." });
 
