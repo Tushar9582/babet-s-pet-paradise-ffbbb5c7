@@ -7,40 +7,46 @@ import { useAuth } from "@/context/AuthContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useCart } from "@/context/CartContext";
-
-interface OrderItem {
-  name: string;
-  qty: number;
-  price: number;
-}
-
-interface Order {
-  id: string;
-  items: OrderItem[];
-  subtotal: number;
-  status: string;
-  created_at: string;
-}
+import {
+  mergeOrderHistory,
+  normalizeOrderHistory,
+  readLocalOrderHistory,
+  type OrderHistoryRecord,
+} from "@/lib/orderHistory";
 
 const OrderHistory = () => {
   const { user } = useAuth();
   const { totalItems, setCartOpen } = useCart();
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<OrderHistoryRecord[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      setOrders([]);
+      setLoading(false);
+      return;
+    }
+
     const fetchOrders = async () => {
+      const localOrders = readLocalOrderHistory(user.id);
       const { data, error } = await supabase
         .from("order_history")
         .select("*")
+        .eq("user_id", user.id)
         .order("created_at", { ascending: false });
+
       if (error) {
         console.error("Fetch orders error:", error);
+        setOrders(localOrders);
+        setLoading(false);
+        return;
       }
-      if (data) setOrders(data as unknown as Order[]);
+
+      const remoteOrders = normalizeOrderHistory((data ?? []) as unknown[]);
+      setOrders(mergeOrderHistory(remoteOrders, localOrders));
       setLoading(false);
     };
+
     fetchOrders();
   }, [user]);
 
