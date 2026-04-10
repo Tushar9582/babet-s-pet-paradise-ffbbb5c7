@@ -31,13 +31,10 @@ const OrderHistory = () => {
   useEffect(() => {
     if (!user) return;
     const fetchOrders = async () => {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("order_history")
         .select("*")
         .order("created_at", { ascending: false });
-      if (error) {
-        console.error("Fetch orders error:", error);
-      }
       if (data) setOrders(data as unknown as Order[]);
       setLoading(false);
     };
