@@ -85,6 +85,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable";
 import type { User, Session } from "@supabase/supabase-js";
 
 interface AuthContextType {
@@ -151,19 +152,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return { error: error ? new Error(error.message) : null };
   };
 
-  // ✅ FIXED GOOGLE LOGIN
   const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-        queryParams: {
-          prompt: "select_account",
-        },
+    const result = await lovable.auth.signInWithOAuth("google", {
+      redirect_uri: window.location.origin,
+      extraParams: {
+        prompt: "select_account",
       },
     });
 
-    return { error: error ? new Error(error.message) : null };
+    if (result.error) {
+      return { error: result.error instanceof Error ? result.error : new Error(String(result.error)) };
+    }
+
+    return { error: null };
   };
 
   const signOut = async () => {
